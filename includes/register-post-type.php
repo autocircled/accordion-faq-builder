@@ -1,5 +1,5 @@
 <?php
-namespace AFaqBuilder\Modules;
+namespace AFaqBuilder\Includes;
 /**
  * Register Accordion FAQ Builder custom post type.
  *

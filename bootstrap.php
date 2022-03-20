@@ -1,7 +1,7 @@
 <?php
 namespace AFaqBuilder;
 
-use \AFaqBuilder\Modules\Register_Post_Type;
+use \AFaqBuilder\Includes\Register_Post_Type;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
