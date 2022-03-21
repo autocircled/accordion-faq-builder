@@ -1,6 +1,7 @@
 <?php
 namespace AFaqBuilder;
 
+use \AFaqBuilder\Includes\Register_Meta_Boxes;
 use \AFaqBuilder\Includes\Register_Post_Type;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -18,7 +19,11 @@ class Bootstrap {
 	private static $instance;
 
     public function __construct() {
-        add_action( 'init', [ Register_Post_Type::class, 'accordion_faq_builder_post_type' ] );
+        // Register custom post type
+		Register_Post_Type::instance();
+
+		// Register meta boxes
+		Register_Meta_Boxes::instance();
     }
 
     public static function instance() {

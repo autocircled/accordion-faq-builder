@@ -29,8 +29,18 @@ class Register_Post_Type {
 	public static function instance() {
 		if ( is_null( self::$instance ) ) {
 			self::$instance = new self();
+			self::$instance->setup();
 		}
 		return self::$instance;
+	}
+
+	/**
+	 * Setup new our custom post type
+	 *
+	 * @since 0.1
+	 */
+	protected function setup() {
+		add_action( 'init', [ $this, 'accordion_faq_builder_post_type' ] );
 	}
 
 	/**
