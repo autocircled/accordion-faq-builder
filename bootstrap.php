@@ -3,6 +3,7 @@ namespace AFaqBuilder;
 
 use \AFaqBuilder\Includes\Register_Meta_Boxes;
 use \AFaqBuilder\Includes\Register_Post_Type;
+use \AFaqBuilder\Includes\Enqueue_Script;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -19,11 +20,10 @@ class Bootstrap {
 	private static $instance;
 
     public function __construct() {
-        // Register custom post type
 		Register_Post_Type::instance();
-
-		// Register meta boxes
 		Register_Meta_Boxes::instance();
+
+		Enqueue_Script::instance();
     }
 
     public static function instance() {
