@@ -49,8 +49,9 @@ class Register_Meta_Boxes {
         wp_nonce_field( 'accordion_content_nonce', 'accordion_content_nonce' );
     
         $value = get_post_meta( $post->ID, '_accordion_content', true );
-        var_dump($value);
+        // var_dump($value);
         $type = isset( $value['type'] ) && ! empty( $value['type'] ) ? $value['type'] : false;
+        $contents = isset( $value['contents'] ) && ! empty( $value['contents'] ) && is_array( $value['contents'] ) ? $value['contents'] : array(); 
     
         ?>
         <div class="accordion-content-wrapper">
@@ -73,20 +74,42 @@ class Register_Meta_Boxes {
                         <div class="accordion-item-wrapper">
                             <h3 class="item-counter"><?php echo esc_html__( 'Item #', 'sss' ); ?></h3>
                             <div class="row">
-                                <label for="accordion_builder[contents][#][title]"><?php echo esc_html__( 'Title', 'sss' ); ?></label>
-                                <input type="text" id="accordion_builder[contents][#][title]" name="accordion_builder[contents][#][title]" value="">
+                                <label data-target="title-label"><?php echo esc_html__( 'Title', 'sss' ); ?></label>
+                                <input type="text" data-target="title-input">
                             </div>
                             <div class="row">
-                                <label for="accordion_builder[contents][#][content]"><?php echo esc_html__( 'Content', 'sss' ); ?></label>
-                                <textarea style="width:100%" id="accordion_builder[contents][#][content]" name="accordion_builder[contents][#][content]" rows="5"></textarea>
+                                <label data-target="content-label"><?php echo esc_html__( 'Content', 'sss' ); ?></label>
+                                <textarea style="width:100%" rows="5" data-target="content-input"></textarea>
                             </div>
                         </div>
                     </li>
                 </div>
                 <ul id="accordion-items" class="accordion-items">
-                    
+                    <?php
+                    if ( count( $contents ) > 0 ) {
+                        foreach( $contents as $key => $val ) {
+                            $title = isset( $val['title'] ) ? $val['title'] : '';
+                            $content = isset( $val['content'] ) ? $val['content'] : '';
+                            ?>
+                            <li id="item-<?php echo esc_attr( $key ); ?>" class="accordion-item accordion-item-<?php echo esc_attr( $key ); ?>" data-id="<?php echo esc_attr( $key ); ?>">
+                                <div class="accordion-item-wrapper">
+                                    <h3 class="item-counter"><?php echo esc_html( $key + 1 ); ?>. Item:</h3>
+                                    <div class="row">
+                                        <label data-target="title-label" for="accordion_builder[contents][<?php echo esc_attr( $key ); ?>][title]">Title</label>
+                                        <input type="text" data-target="title-input" id="accordion_builder[contents][<?php echo esc_attr( $key ); ?>][title]" name="accordion_builder[contents][<?php echo esc_attr( $key ); ?>][title]" value="<?php echo esc_attr( $title ); ?>">
+                                    </div>
+                                    <div class="row">
+                                        <label data-target="content-label" for="accordion_builder[contents][<?php echo esc_attr( $key ); ?>][content]">Content</label>
+                                        <textarea style="width:100%" rows="5" data-target="content-input" id="accordion_builder[contents][<?php echo esc_html( $key ); ?>][content]" name="accordion_builder[contents][<?php echo esc_attr( $key ); ?>][content]"><?php echo wp_kses_post( $content ); ?></textarea>
+                                    </div>
+                                </div>
+                            </li>
+                            <?php
+                        }
+                    }
+                    ?>
                 </ul>
-                <a href="#" id="add-new-item" class="button button-primary button-large"><?php echo esc_html__( 'Add new item', 'sss' ); ?></a>
+                <a href="#" id="add-new-item" class="button button-primary button-large" data-next="<?php echo esc_attr( count( $contents ) ); ?>"><?php echo esc_html__( 'Add new item', 'sss' ); ?></a>
             </div>
         </div>
         <?php
