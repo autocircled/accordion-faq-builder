@@ -9,6 +9,11 @@ namespace AFaqBuilder\Includes;
 
 class Helper {
 
+    public static $defaults = array(
+        'id' => 0,
+        'position' => 'vertical',
+    );
+
     /**
      * Recursive sanitation for an array
      *

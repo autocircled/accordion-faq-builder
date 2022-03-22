@@ -3,6 +3,7 @@ namespace AFaqBuilder;
 
 use \AFaqBuilder\Includes\Register_Meta_Boxes;
 use \AFaqBuilder\Includes\Register_Post_Type;
+use \AFaqBuilder\Includes\Shortcode;
 use \AFaqBuilder\Includes\Enqueue_Script;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -22,7 +23,7 @@ class Bootstrap {
     public function __construct() {
 		Register_Post_Type::instance();
 		Register_Meta_Boxes::instance();
-
+		Shortcode::instance();
 		Enqueue_Script::instance();
     }
 
