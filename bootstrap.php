@@ -1,4 +1,11 @@
 <?php
+/**
+ * Bootstrap
+ *
+ * @since      0.1
+ *
+ * @package    a-faq-builder
+ */
 namespace AFaqBuilder;
 
 use \AFaqBuilder\Includes\Register_Meta_Boxes;

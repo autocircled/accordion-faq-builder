@@ -1,6 +1,10 @@
 <?php
 /**
  * Register meta boxes for Accordion Post type
+ *
+ * @since      0.1
+ *
+ * @package    a-faq-builder
  */
 namespace AFaqBuilder\Includes;
 

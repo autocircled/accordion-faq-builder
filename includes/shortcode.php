@@ -1,9 +1,17 @@
 <?php
 /**
  * Register meta boxes for Accordion Post type
+ *
+ * @package a-faq-builder
  */
 namespace AFaqBuilder\Includes;
+
 use \AFaqBuilder\Includes\Helper;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 
 class Shortcode {
     private static $instance;
@@ -28,43 +36,19 @@ class Shortcode {
     }
 
     public function faq_builder_shortcode_generator( $atts = array() ) {
-
-        $args = wp_parse_args(
-            $atts, Helper::$defaults
+        $atts = array_change_key_case( $atts );
+        $args = shortcode_atts(
+            Helper::$defaults, $atts
         );
         // var_dump($atts, $args);
         $value = get_post_meta( $args['id'], '_accordion_content', true );
-        var_dump($value);
+        // var_dump($value);
 
-        $item_html = '';
-        if ( isset( $value['contents'] ) && ! empty( $value['contents'] ) && is_array( $value['contents'] ) && count( $value['contents'] ) > 0 ) {
-            // We are safe now
-            foreach( $value['contents'] as $key => $item ) {
-                $item_title = isset( $item['title'] ) ? $item['title'] : '';
-                $item_content = isset( $item['content'] ) ? $item['content'] : '';
-                if ( ! empty( $item_title ) && ! empty( $item_content ) ) {
-                    $item_html .= '<li id="faq-item-' . esc_attr( $key ) . '" class="faq-item faq-item-' . esc_attr( $key ) . '">';
-                    $item_html .= '<div class="faq-item-inner">';
-                    $item_html .= '<h3 class="faq-item-title">' . esc_html( $item_title ) . '</h3>';
-                    $item_html .= '<div class="faq-item-content">';
-                    $item_html .= '<p>' . esc_html( $item_content ) . '</p>';
-                    $item_html .= '</div>';
-                    $item_html .= '</div>';
-                    $item_html .= '</li>';
-                }
-            }
+        if ( isset( $value['type'] ) && 'content' === $value['type'] ) {
+            include 'templates/content.php';
         }
-
-        $html = <<<EOT
-        <div class="faq-builder">
-            <div class="faq-inner-wrapper">
-                <h3 class="faq-title">Faq Title</h3>
-                <ul class="faq-items">
-                    {$item_html}
-                </ul>
-            </div>
-        </div>
-EOT;
-        return $html;
+        if ( isset( $value['type'] ) && 'post' === $value['type'] ) {
+            include 'templates/post.php';
+        }
     }
 }

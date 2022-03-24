@@ -1,8 +1,16 @@
 <?php
 /**
  * Enqueue style and scripts
+ *
+ * @since      0.1
+ *
+ * @package    a-faq-builder
  */
 namespace AFaqBuilder\Includes;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 class Enqueue_Script {
 

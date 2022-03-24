@@ -1,5 +1,4 @@
 <?php
-namespace AFaqBuilder\Includes;
 /**
  * Register Accordion FAQ Builder custom post type.
  *
@@ -7,6 +6,7 @@ namespace AFaqBuilder\Includes;
  *
  * @package    a-faq-builder
  */
+namespace AFaqBuilder\Includes;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
