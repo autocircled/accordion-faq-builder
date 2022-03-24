@@ -40,13 +40,13 @@ class Register_Post_Type {
 	 * @since 0.1
 	 */
 	protected function setup() {
-		add_action( 'init', [ $this, 'accordion_faq_builder_post_type' ] );
+		add_action( 'init', [ $this, 'accordion_faq_post_type' ] );
 	}
 
 	/**
 	 * Accordion FAQ Builder post type
 	 */
-	public function accordion_faq_builder_post_type() {
+	public function accordion_faq_post_type() {
 
 		if ( post_type_exists( 'accordion_faq' ) ) {
 			return;
@@ -54,7 +54,7 @@ class Register_Post_Type {
 
 		// Set the Accordion FAQ Builder post type labels.
 		$labels = apply_filters(
-			'a_faq_builder_post_type_labels',
+			'afb_post_type_labels',
 			array(
 				'name'               => esc_html_x( 'Accordion FAQs', 'a-faq-builder' ),
 				'singular_name'      => esc_html_x( 'Accordion', 'a-faq-builder' ),
@@ -88,14 +88,14 @@ class Register_Post_Type {
 
 		// Set the Accordion FAQ Builder post type arguments.
 		$args = apply_filters(
-			'a_faq_builder_post_type_args',
+			'afb_post_type_args',
 			array(
 				'labels'              => $labels,
 				'hierarchical'        => false,
 				'public'              => false,
 				'show_ui'             => true,
 				'exclude_from_search' => true,
-				'menu_position'       => apply_filters( 'a_faq_builder_menu_position', 116 ),
+				'menu_position'       => apply_filters( 'afb_menu_position', 116 ),
 				'show_in_admin_bar'   => false,
 				'query_var'           => false,
 				'rewrite'             => false,

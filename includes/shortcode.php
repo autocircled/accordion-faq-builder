@@ -32,16 +32,16 @@ class Shortcode {
 	}
 
     protected function setup() {
-        add_shortcode( 'FAQ_Builder', [ $this, 'faq_builder_shortcode_generator' ] );
+        add_shortcode( 'A_FAQ_Builder', [ $this, 'afb_shortcode_generator' ] );
     }
 
-    public function faq_builder_shortcode_generator( $atts = array() ) {
+    public function afb_shortcode_generator( $atts = array() ) {
         $atts = array_change_key_case( $atts );
         $args = shortcode_atts(
             Helper::$defaults, $atts
         );
         // var_dump($atts, $args);
-        $value = get_post_meta( $args['id'], '_accordion_content', true );
+        $value = get_post_meta( $args['id'], '_afb_content', true );
         // var_dump($value);
 
         if ( isset( $value['type'] ) && 'content' === $value['type'] ) {

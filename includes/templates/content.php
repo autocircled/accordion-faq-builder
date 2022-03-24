@@ -9,10 +9,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 ?>
-<div class="faq-builder">
-    <div class="faq-inner-wrapper">
-        <h3 class="faq-title">Faq Title</h3>
-        <ul class="faq-items">
+<div class="a-faq-builder">
+    <div class="afb-inner-wrapper">
+        <h3 class="afb-title">Faq Title</h3>
+        <ul class="afb-items">
             <?php
             if ( isset( $value['contents'] ) && ! empty( $value['contents'] ) && is_array( $value['contents'] ) && count( $value['contents'] ) > 0 ) :
                 foreach( $value['contents'] as $key => $item ) :
@@ -20,10 +20,10 @@ if ( ! defined( 'ABSPATH' ) ) {
                     $item_content = isset( $item['content'] ) ? $item['content'] : '';
                     if ( ! empty( $item_title ) && ! empty( $item_content ) ) :
                         ?>
-                        <li id="faq-item-'<?php echo esc_attr( $key ); ?>" class="faq-item faq-item-'<?php echo esc_attr( $key ); ?>">
-                            <div class="faq-item-inner">
-                                <h3 class="faq-item-title"><?php echo esc_html( $item_title ); ?></h3>
-                                <div class="faq-item-content">
+                        <li id="afb-item-<?php echo esc_attr( $key ); ?>" class="afb-item afb-item-<?php echo esc_attr( $key ); ?>">
+                            <div class="afb-item-inner">
+                                <h3 class="afb-item-title"><?php echo esc_html( $item_title ); ?></h3>
+                                <div class="afb-item-content">
                                     <p><?php echo esc_html( $item_content ); ?></p>
                                 </div>
                             </div>

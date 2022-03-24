@@ -32,11 +32,12 @@ class Enqueue_Script {
 	}
 
     protected function setup() {
-        add_action( 'admin_enqueue_scripts', [ $this, 'load_scripts' ] );
+        add_action( 'admin_enqueue_scripts', [ $this, 'admin_scripts' ] );
     }
 
-    public function load_scripts() {
+    public function admin_scripts() {
+		wp_enqueue_style( 'afb_admin_style', trailingslashit( AFAQBUILDER_URL ) . 'assets/css/admin-style.css', array(), AFAQBUILDER_VERSION, 'all' );
         wp_enqueue_script( 'shortable', trailingslashit( AFAQBUILDER_URL ) . 'assets/js/Sortable.js', array(), '1.15.0', true );
-        wp_enqueue_script( 'a_faq_builder_admin_script', trailingslashit( AFAQBUILDER_URL ) . 'assets/js/admin-script.js', array( 'shortable' ), AFAQBUILDER_VERSION, true );
+        wp_enqueue_script( 'afb_admin_script', trailingslashit( AFAQBUILDER_URL ) . 'assets/js/admin-script.js', array( 'shortable' ), AFAQBUILDER_VERSION, true );
     }
 }
