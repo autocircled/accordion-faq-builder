@@ -53,10 +53,9 @@ class Register_Meta_Boxes {
         wp_nonce_field( 'accordion_content_nonce', 'accordion_content_nonce' );
     
         $value = get_post_meta( $post->ID, '_accordion_content', true );
-        // var_dump($value);
+        var_dump($value);
         $type = isset( $value['type'] ) && ! empty( $value['type'] ) ? $value['type'] : false;
         $contents = isset( $value['contents'] ) && ! empty( $value['contents'] ) && is_array( $value['contents'] ) ? $value['contents'] : array(); 
-    
         ?>
         <div class="accordion-content-wrapper">
             <header class="meta-box-header">
@@ -88,7 +87,7 @@ class Register_Meta_Boxes {
                         </div>
                     </li>
                 </div>
-                <ul id="accordion-items" class="accordion-items">
+                <ul id="accordionItems" class="accordion-items">
                     <?php
                     if ( count( $contents ) > 0 ) {
                         foreach( $contents as $key => $val ) {
@@ -149,13 +148,22 @@ class Register_Meta_Boxes {
             }
 
         }
-// var_dump($_POST);
+
         /* OK, it's safe for us to save the data now. */
 
         // Make sure that it is set.
         if ( ! isset( $_POST['accordion_builder'] ) ) {
             return;
         }
+        if ( ! isset( $_POST['accordion_builder']['contents'] ) ) {
+            return;
+        }
+
+        // Sorting faq items if they need to be sorted
+        $sorted_values = array_map( function( $v ){ return $v; }, array_values( $_POST['accordion_builder']['contents'] ) );
+
+        // Re-assigning sorted faq items into original array
+        $_POST['accordion_builder']['contents'] = $sorted_values;
 
         // Sanitize user input.
         $my_data = Helper::recursive_sanitize_text_field( $_POST['accordion_builder'] );

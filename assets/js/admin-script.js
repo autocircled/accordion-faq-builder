@@ -28,7 +28,14 @@
         content_input_selector[0].setAttribute('id', new_id_for_content );
         content_input_selector[0].setAttribute('name', new_id_for_content );
 
-        document.getElementById("accordion-items").appendChild(clone);
+        document.getElementById("accordionItems").appendChild(clone);
         counter++;
+    });
+
+
+    // Shortable.js
+    new Sortable(accordionItems, {
+        animation: 150,
+        ghostClass: 'blue-background-class'
     });
 })();

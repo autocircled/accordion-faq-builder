@@ -36,6 +36,7 @@ class Enqueue_Script {
     }
 
     public function load_scripts() {
-        wp_enqueue_script( 'a_faq_builder_admin_script', trailingslashit( AFAQBUILDER_URL ) . 'assets/js/admin-script.js', array(), AFAQBUILDER_VERSION, true );
+        wp_enqueue_script( 'shortable', trailingslashit( AFAQBUILDER_URL ) . 'assets/js/Sortable.js', array(), '1.15.0', true );
+        wp_enqueue_script( 'a_faq_builder_admin_script', trailingslashit( AFAQBUILDER_URL ) . 'assets/js/admin-script.js', array( 'shortable' ), AFAQBUILDER_VERSION, true );
     }
 }
