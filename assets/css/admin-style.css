@@ -3,7 +3,8 @@
     align-items: center;
     column-gap: 10px;
     padding: 10px;
-    background: #2271b150;
+    background: #c9c9c950;
+    justify-content: space-between;
 }
 .afb--items .item-header .handle {
     cursor: grab;
@@ -16,4 +17,30 @@
     position: absolute;
     opacity: 0;
     text-indent: -999em;
+}
+
+.afb--items .expanded .item-body {
+    position: relative;
+    opacity: 1;
+    text-indent: 0;
+}
+
+.afb--items .item-header .afb--rs {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.afb--item:first-child .item-header span.move-up,
+.afb--item:last-child .item-header span.move-down {
+    opacity: .5;
+    cursor: default;
+}
+.afb--items .item-header span.expand-handle {
+    transform: rotate(90deg);
+}
+.afb--items .item-header .afb--rs .move-up,
+.afb--items .item-header .afb--rs .move-down {
+    font-size: 30px;
+    width: 30px;
+    height: 30px;
 }

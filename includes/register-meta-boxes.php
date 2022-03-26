@@ -53,7 +53,7 @@ class Register_Meta_Boxes {
         wp_nonce_field( 'afb_content_nonce', 'afb_content_nonce' );
     
         $value = get_post_meta( $post->ID, '_afb_content', true );
-        var_dump($value);
+        // var_dump($value);
         $type = isset( $value['type'] ) && ! empty( $value['type'] ) ? $value['type'] : false;
         $contents = isset( $value['contents'] ) && ! empty( $value['contents'] ) && is_array( $value['contents'] ) ? $value['contents'] : array(); 
         ?>
@@ -75,7 +75,17 @@ class Register_Meta_Boxes {
                 <div class="clonable-content" style="display: none;">
                     <li id="clonable-item" class="afb--item afb-clonable-item">
                         <div class="afb--item-wrapper">
-                            <h3 class="item-counter"><?php echo esc_html__( 'Item #', 'sss' ); ?></h3>
+                            <div class="item-header">
+                                <div class="afb--ls">
+                                    <h3 class="item-counter"><?php echo esc_html__( 'Item #', 'sss' ); ?></h3>
+                                </div>
+                                <div class="afb--rs">
+                                    <span class="dashicons dashicons-move handle"></span>
+                                    <span class="dashicons dashicons-arrow-up move-up"></span>
+                                    <span class="dashicons dashicons-arrow-down move-down"></span>
+                                    <span class="dashicons dashicons-editor-code expand-handle"></span>
+                                </div>
+                            </div>
                             <div class="row">
                                 <label data-target="title-label"><?php echo esc_html__( 'Title', 'sss' ); ?></label>
                                 <input type="text" data-target="title-input">
@@ -94,11 +104,18 @@ class Register_Meta_Boxes {
                             $title = isset( $val['title'] ) ? $val['title'] : '';
                             $content = isset( $val['content'] ) ? $val['content'] : '';
                             ?>
-                            <li id="item-<?php echo esc_attr( $key ); ?>" class="afb--item afb--item-<?php echo esc_attr( $key ); ?>" data-id="<?php echo esc_attr( $key ); ?>">
+                            <li id="item-<?php echo esc_attr( $key ); ?>" class="afb--item afb--item-<?php echo esc_attr( $key ); ?> expanded" data-id="<?php echo esc_attr( $key ); ?>">
                                 <div class="afb--item-wrapper">
                                     <div class="item-header">
-                                        <span class="dashicons dashicons-move handle"></span>
-                                        <h3 class="item-counter"><?php echo esc_html( $key + 1 ); ?>. Item:</h3>
+                                        <div class="afb--ls">
+                                            <h3 class="item-counter"><?php echo esc_html( $key + 1 ); ?>. Item:</h3>
+                                        </div>
+                                        <div class="afb--rs">
+                                            <span class="dashicons dashicons-move handle"></span>
+                                            <span class="dashicons dashicons-arrow-up move-up"></span>
+                                            <span class="dashicons dashicons-arrow-down move-down"></span>
+                                            <span class="dashicons dashicons-editor-code expand-handle"></span>
+                                        </div>
                                     </div>
                                     <div class="item-body">
                                         <div class="row">
