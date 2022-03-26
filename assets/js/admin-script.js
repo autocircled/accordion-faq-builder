@@ -19,7 +19,7 @@ aFaqBuilder.addNewFaqItem = {
             clone.setAttribute('data-id', counter );
             clone.setAttribute('id', "item-" + counter );
             clone.setAttribute('class', "afb--item afb--item-" + counter + " expanded" );
-            clone.getElementsByTagName('h3')[0].innerHTML = (counter + 1) + ". Item:";
+            clone.getElementsByTagName('h3')[0].innerHTML = "New Item";
 
             const new_id_for_title = 'afb_data[contents]['+ counter +'][title]';
             const title_label_selector = clone.querySelectorAll( '[data-target="title-label"]' );
@@ -39,7 +39,7 @@ aFaqBuilder.addNewFaqItem = {
             counter++;
 
             // Triggered after create new item
-            aFaqBuilderControls();
+            //aFaqBuilderControls();
         });
 
 

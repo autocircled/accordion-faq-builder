@@ -81,9 +81,9 @@ class Register_Meta_Boxes {
                                 </div>
                                 <div class="afb--rs">
                                     <span class="dashicons dashicons-move handle"></span>
-                                    <span class="dashicons dashicons-arrow-up move-up"></span>
+                                    <!-- <span class="dashicons dashicons-arrow-up move-up"></span>
                                     <span class="dashicons dashicons-arrow-down move-down"></span>
-                                    <span class="dashicons dashicons-editor-code expand-handle"></span>
+                                    <span class="dashicons dashicons-editor-code expand-handle"></span> -->
                                 </div>
                             </div>
                             <div class="row">
@@ -101,14 +101,14 @@ class Register_Meta_Boxes {
                     <?php
                     if ( count( $contents ) > 0 ) {
                         foreach( $contents as $key => $val ) {
-                            $title = isset( $val['title'] ) ? $val['title'] : '';
+                            $title = isset( $val['title'] ) && ! empty( $val['title'] ) ? $val['title'] : '';
                             $content = isset( $val['content'] ) ? $val['content'] : '';
                             ?>
                             <li id="item-<?php echo esc_attr( $key ); ?>" class="afb--item afb--item-<?php echo esc_attr( $key ); ?> expanded" data-id="<?php echo esc_attr( $key ); ?>">
                                 <div class="afb--item-wrapper">
                                     <div class="item-header">
                                         <div class="afb--ls">
-                                            <h3 class="item-counter"><?php echo esc_html( $key + 1 ); ?>. Item:</h3>
+                                            <h3 class="item-counter"><?php echo empty( $title ) ? esc_html__( 'New Item', 'sss' ) : esc_html( $title ); ?></h3>
                                         </div>
                                         <div class="afb--rs">
                                             <span class="dashicons dashicons-move handle"></span>
