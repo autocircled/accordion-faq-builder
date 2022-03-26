@@ -33,6 +33,7 @@ class Enqueue_Script {
 
     protected function setup() {
         add_action( 'admin_enqueue_scripts', [ $this, 'admin_scripts' ] );
+        add_action( 'wp_enqueue_scripts', [ $this, 'public_scripts' ] );
     }
 
     public function admin_scripts() {
@@ -40,4 +41,9 @@ class Enqueue_Script {
         wp_enqueue_script( 'shortable', trailingslashit( AFAQBUILDER_URL ) . 'assets/js/Sortable.js', array(), '1.15.0', true );
         wp_enqueue_script( 'afb_admin_script', trailingslashit( AFAQBUILDER_URL ) . 'assets/js/admin-script.js', array( 'shortable' ), AFAQBUILDER_VERSION, true );
     }
+	
+	public function public_scripts() {
+		wp_enqueue_style( 'afb_style', trailingslashit( AFAQBUILDER_URL ) . 'assets/css/style.css', array(), AFAQBUILDER_VERSION, 'all' );
+		wp_enqueue_script( 'afb_script', trailingslashit( AFAQBUILDER_URL ) . 'assets/js/script.js', array(), AFAQBUILDER_VERSION, true );
+	}
 }
