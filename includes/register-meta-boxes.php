@@ -53,7 +53,7 @@ class Register_Meta_Boxes {
         wp_nonce_field( 'afb_content_nonce', 'afb_content_nonce' );
     
         $value = get_post_meta( $post->ID, '_afb_content', true );
-        // var_dump($value);
+
         $type = isset( $value['type'] ) && ! empty( $value['type'] ) ? $value['type'] : false;
         $contents = isset( $value['contents'] ) && ! empty( $value['contents'] ) && is_array( $value['contents'] ) ? $value['contents'] : array(); 
         ?>
@@ -86,13 +86,15 @@ class Register_Meta_Boxes {
                                     <span class="dashicons dashicons-editor-code expand-handle"></span> -->
                                 </div>
                             </div>
-                            <div class="row">
-                                <label data-target="title-label"><?php echo esc_html__( 'Title', 'sss' ); ?></label>
-                                <input type="text" data-target="title-input">
-                            </div>
-                            <div class="row">
-                                <label data-target="content-label"><?php echo esc_html__( 'Content', 'sss' ); ?></label>
-                                <textarea style="width:100%" rows="5" data-target="content-input"></textarea>
+                            <div class="item-body">
+                                <div class="row">
+                                    <label data-target="title-label"><?php echo esc_html__( 'Title', 'sss' ); ?></label>
+                                    <input type="text" data-target="title-input">
+                                </div>
+                                <div class="row">
+                                    <label data-target="content-label"><?php echo esc_html__( 'Content', 'sss' ); ?></label>
+                                    <textarea style="width:100%" rows="5" data-target="content-input"></textarea>
+                                </div>
                             </div>
                         </div>
                     </li>
@@ -111,6 +113,10 @@ class Register_Meta_Boxes {
                                             <h3 class="item-counter"><?php echo empty( $title ) ? esc_html__( 'New Item', 'sss' ) : esc_html( $title ); ?></h3>
                                         </div>
                                         <div class="afb--rs">
+                                            <span class="hover-control">
+                                                <span class="dashicons dashicons-admin-page clone"></span>
+                                                <span class="dashicons dashicons-trash trash"></span>
+                                            </span>
                                             <span class="dashicons dashicons-move handle"></span>
                                             <span class="dashicons dashicons-arrow-up move-up"></span>
                                             <span class="dashicons dashicons-arrow-down move-down"></span>
@@ -134,7 +140,7 @@ class Register_Meta_Boxes {
                     }
                     ?>
                 </ul>
-                <a href="#" id="add-new-item" class="button button-primary button-large" data-next="<?php echo esc_attr( count( $contents ) ); ?>"><?php echo esc_html__( 'Add new item', 'sss' ); ?></a>
+                <a href="#" id="add-new-faq-item" class="button button-primary button-large" data-next="<?php echo esc_attr( count( $contents ) ); ?>"><?php echo esc_html__( 'Add new item', 'sss' ); ?></a>
             </div>
         </div>
         <?php
@@ -188,9 +194,9 @@ class Register_Meta_Boxes {
         $_POST['afb_data']['contents'] = $sorted_values;
 
         // Sanitize user input.
-        $my_data = Helper::recursive_sanitize_text_field( $_POST['afb_data'] );
+        $afb_data = Helper::recursive_sanitize_text_field( $_POST['afb_data'] );
 
         // Update the meta field in the database.
-        update_post_meta( $post_id, '_afb_content', $my_data );
+        update_post_meta( $post_id, '_afb_content', $afb_data );
     }
 }

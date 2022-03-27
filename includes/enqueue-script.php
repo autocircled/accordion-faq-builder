@@ -48,6 +48,7 @@ class Enqueue_Script {
 
 		$data = array(
 			'multi_open' => false,
+			'new_item_text' => __( 'New item', 'sss' ),
 		);
 
 		wp_localize_script( 'afb_script', 'AFB_DATA', $data );
