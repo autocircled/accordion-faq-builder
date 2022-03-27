@@ -22,9 +22,17 @@ if ( ! defined( 'ABSPATH' ) ) {
                         ?>
                         <li id="afb-item-<?php echo esc_attr( $key ); ?>" class="afb-item afb-item-<?php echo esc_attr( $key ); ?>">
                             <div class="afb-item-inner">
-                                <h3 class="afb-item-title"><?php echo esc_html( $item_title ); ?></h3>
-                                <div class="afb-item-content">
-                                    <p><?php echo esc_html( $item_content ); ?></p>
+                                <div class="item-header">
+                                        <a class="afb-item-title" href="#afb-item-<?php echo esc_attr( $key ); ?>">
+                                            <span class="number"><?php echo esc_attr( ( $key + 1 ) . '.' ); ?></span>
+                                            <span class="afb-title"><?php echo esc_html( $item_title ); ?></span>
+                                            <span class="dashicons dashicons-arrow-right-alt direction-move"></span>
+                                        </a>
+                                </div>
+                                <div class="afb-item-body">
+                                    <div class="afb-item-content">
+                                        <p><?php echo esc_html( $item_content ); ?></p>
+                                    </div>
                                 </div>
                             </div>
                         </li>
