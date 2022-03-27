@@ -17,6 +17,7 @@ class Helper {
     public static $defaults = array(
         'id' => 0,
         'position' => 'vertical',
+        'type' => 'content',
     );
 
     /**

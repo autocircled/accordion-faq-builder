@@ -36,6 +36,10 @@ class Register_Meta_Boxes {
     protected function setup() {
         add_action( 'add_meta_boxes', [ $this, 'add_meta_boxes' ] );
         add_action( 'save_post', [ $this, 'save_afb_content_meta_box_data' ] );
+        add_filter('manage_accordion_faq_posts_columns', function( $columns ) {
+            return array_merge( $columns, ['shortcode' => __('Shortcode', 'a-faq-builder')] );
+        });
+        add_action('manage_accordion_faq_posts_custom_column', [ $this, 'shortcode_genarator' ], 10, 2);
     }
     
     public function add_meta_boxes() {
@@ -54,12 +58,12 @@ class Register_Meta_Boxes {
     
         $value = get_post_meta( $post->ID, '_afb_content', true );
 
-        $type = isset( $value['type'] ) && ! empty( $value['type'] ) ? $value['type'] : false;
+        $type = isset( $value['type'] ) && ! empty( $value['type'] ) ? $value['type'] : Helper::$defaults['type'];
         $contents = isset( $value['contents'] ) && ! empty( $value['contents'] ) && is_array( $value['contents'] ) ? $value['contents'] : array(); 
         ?>
         <div class="afb-content-wrapper">
             <header class="meta-box-header">
-                <h3 class="section-title"><?php echo esc_html__( 'Accordion Type', 'sss' ); ?></h3>
+                <h3 class="section-title"><?php echo esc_html__( 'Accordion Type', 'a-faq-builder' ); ?></h3>
                 <ul>
                     <li>
                         <input type="radio" name="afb_data[type]" id="afb-type-content" value="content" <?php echo $type && 'content' === $type ? esc_attr( 'checked' ) : ''; ?> >
@@ -77,7 +81,7 @@ class Register_Meta_Boxes {
                         <div class="afb--item-wrapper">
                             <div class="item-header">
                                 <div class="afb--ls">
-                                    <h3 class="item-counter"><?php echo esc_html__( 'Item #', 'sss' ); ?></h3>
+                                    <h3 class="item-counter"><?php echo esc_html__( 'Item #', 'a-faq-builder' ); ?></h3>
                                 </div>
                                 <div class="afb--rs">
                                     <span class="dashicons dashicons-move handle"></span>
@@ -88,11 +92,11 @@ class Register_Meta_Boxes {
                             </div>
                             <div class="item-body">
                                 <div class="row">
-                                    <label data-target="title-label"><?php echo esc_html__( 'Title', 'sss' ); ?></label>
+                                    <label data-target="title-label"><?php echo esc_html__( 'Title', 'a-faq-builder' ); ?></label>
                                     <input type="text" data-target="title-input">
                                 </div>
                                 <div class="row">
-                                    <label data-target="content-label"><?php echo esc_html__( 'Content', 'sss' ); ?></label>
+                                    <label data-target="content-label"><?php echo esc_html__( 'Content', 'a-faq-builder' ); ?></label>
                                     <textarea style="width:100%" rows="5" data-target="content-input"></textarea>
                                 </div>
                             </div>
@@ -110,7 +114,7 @@ class Register_Meta_Boxes {
                                 <div class="afb--item-wrapper">
                                     <div class="item-header">
                                         <div class="afb--ls">
-                                            <h3 class="item-counter"><?php echo empty( $title ) ? esc_html__( 'New Item', 'sss' ) : esc_html( $title ); ?></h3>
+                                            <h3 class="item-counter"><?php echo empty( $title ) ? esc_html__( 'New Item', 'a-faq-builder' ) : esc_html( $title ); ?></h3>
                                         </div>
                                         <div class="afb--rs">
                                             <span class="hover-control">
@@ -140,7 +144,7 @@ class Register_Meta_Boxes {
                     }
                     ?>
                 </ul>
-                <a href="#" id="add-new-faq-item" class="button button-primary button-large" data-next="<?php echo esc_attr( count( $contents ) ); ?>"><?php echo esc_html__( 'Add new item', 'sss' ); ?></a>
+                <a href="#" id="add-new-faq-item" class="button button-primary button-large" data-next="<?php echo esc_attr( count( $contents ) ); ?>"><?php echo esc_html__( 'Add new item', 'a-faq-builder' ); ?></a>
             </div>
         </div>
         <?php
@@ -198,5 +202,11 @@ class Register_Meta_Boxes {
 
         // Update the meta field in the database.
         update_post_meta( $post_id, '_afb_content', $afb_data );
+    }
+
+    public function shortcode_genarator( $column_key, $post_id ) {
+        if ($column_key == 'shortcode') {
+                echo '<code id="afb-shortcode-'. esc_attr( $post_id ) .'">[A_FAQ_Builder id="' . esc_attr( $post_id ) . '"]</code>';
+        }
     }
 }

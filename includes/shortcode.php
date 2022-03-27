@@ -40,15 +40,16 @@ class Shortcode {
         $args = shortcode_atts(
             Helper::$defaults, $atts
         );
-        // var_dump($atts, $args);
+
         $value = get_post_meta( $args['id'], '_afb_content', true );
-        // var_dump($value);
+
 
         if ( isset( $value['type'] ) && 'content' === $value['type'] ) {
             include 'templates/content.php';
+            return $html;
         }
-        if ( isset( $value['type'] ) && 'post' === $value['type'] ) {
-            include 'templates/post.php';
-        }
+        // if ( isset( $value['type'] ) && 'post' === $value['type'] ) {
+        //     include 'templates/post.php';
+        // }
     }
 }

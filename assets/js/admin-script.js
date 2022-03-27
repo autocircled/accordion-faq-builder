@@ -45,7 +45,7 @@ aFaqBuilder.cloneIt = function( counter, parentEl, element = false ) {
     clone.setAttribute('data-id', counter );
     clone.setAttribute('id', "item-" + counter );
     clone.setAttribute('class', "afb--item afb--item-" + counter + " expanded" );
-    clone.getElementsByTagName('h3')[0].innerHTML = "New Item";
+    clone.getElementsByTagName('h3')[0].innerHTML = AFB_Admin_DATA.new_item_text;
     
     
     const new_id_for_title = 'afb_data[contents]['+ counter +'][title]';
@@ -71,6 +71,43 @@ aFaqBuilder.cloneIt = function( counter, parentEl, element = false ) {
     aFaqBuilder.counter++;
 };
 
+aFaqBuilder.copyShortcode = {
+    init: function(){
+        this.create();
+    },
+
+    create: function(){
+        const elements = document.querySelectorAll('.post-type-accordion_faq .shortcode code');
+        if( elements < 1 ) return;
+        elements.forEach( (el, i) => {
+            el.addEventListener( 'click', function(){
+                for( const item of elements ){
+                    if( item !== el && item.classList.contains( 'copied' ) ){
+                        item.classList.remove( 'copied' );
+                    }
+                }
+                el.classList.toggle('copied');
+                aFaqBuilder.copyShortcode.selecttext(el.getAttribute('id'));
+            });
+        } );
+    },
+
+    // https://stackoverflow.com/questions/1173194/select-all-div-text-with-single-mouse-click
+    selecttext: function( containerid ) {
+        if (document.selection) { // IE
+            var range = document.body.createTextRange();
+            range.moveToElementText(document.getElementById(containerid));
+            range.select();
+        } else if (window.getSelection) {
+            var range = document.createRange();
+            range.selectNode(document.getElementById(containerid));
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            navigator.clipboard.writeText(document.getElementById(containerid).innerText);
+            alert( AFB_Admin_DATA.copy_text )
+        }
+    }
+}
 
 /**
  * Is the DOM ready?
@@ -96,6 +133,7 @@ aFaqBuilder.cloneIt = function( counter, parentEl, element = false ) {
 
 afbDomReady( function() {
 	aFaqBuilder.addNewFaqItem.init();
+    aFaqBuilder.copyShortcode.init();
 } );
 
 /**

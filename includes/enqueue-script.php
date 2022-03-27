@@ -40,6 +40,12 @@ class Enqueue_Script {
 		wp_enqueue_style( 'afb_admin_style', trailingslashit( AFAQBUILDER_URL ) . 'assets/css/admin-style.css', array(), AFAQBUILDER_VERSION, 'all' );
         wp_enqueue_script( 'shortable', trailingslashit( AFAQBUILDER_URL ) . 'assets/js/Sortable.js', array(), '1.15.0', true );
         wp_enqueue_script( 'afb_admin_script', trailingslashit( AFAQBUILDER_URL ) . 'assets/js/admin-script.js', array( 'shortable' ), AFAQBUILDER_VERSION, true );
+		$data = array(
+			'new_item_text' => __( 'New item', 'a-faq-builder' ),
+			'copy_text' => __( 'Shortcode has been copied.', 'a-faq-builder' ),
+		);
+
+		wp_localize_script( 'afb_admin_script', 'AFB_Admin_DATA', $data );
     }
 	
 	public function public_scripts() {
@@ -48,7 +54,6 @@ class Enqueue_Script {
 
 		$data = array(
 			'multi_open' => false,
-			'new_item_text' => __( 'New item', 'sss' ),
 		);
 
 		wp_localize_script( 'afb_script', 'AFB_DATA', $data );

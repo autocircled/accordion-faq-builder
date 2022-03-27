@@ -8,10 +8,13 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
+global $post;
+
+ob_start();
 ?>
 <div class="a-faq-builder">
     <div class="afb-inner-wrapper">
-        <h3 class="afb-title">Faq Title</h3>
+        <h3 class="afb-title"><?php echo get_the_title($args['id']); ?></h3>
         <ul class="afb-items">
             <?php
             if ( isset( $value['contents'] ) && ! empty( $value['contents'] ) && is_array( $value['contents'] ) && count( $value['contents'] ) > 0 ) :
@@ -44,3 +47,5 @@ if ( ! defined( 'ABSPATH' ) ) {
         </ul>
     </div>
 </div>
+<?php
+$html = ob_get_clean();
