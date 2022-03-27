@@ -44,6 +44,12 @@ class Register_Meta_Boxes {
     
     public function add_meta_boxes() {
         add_meta_box(
+            'afb-shortcode',
+            __( 'Shortcode', 'a-faq-builder' ),
+            [ Register_Meta_Boxes::class, 'afb_shortcode_meta_box_callback' ],
+            'accordion_faq'
+        );
+        add_meta_box(
             'afb-content',
             __( 'Add Accordion FAQ', 'a-faq-builder' ),
             [ Register_Meta_Boxes::class, 'afb_content_meta_box_callback' ],
@@ -70,8 +76,8 @@ class Register_Meta_Boxes {
                         <label for="afb-type-content"><?php echo esc_html__( 'Content', 'a-faq-builder' ); ?></label>
                     </li>
                     <li>
-                        <input type="radio" name="afb_data[type]" id="afb-type-post" value="post" <?php echo $type && 'post' === $type ? esc_attr( 'checked' ) : ''; ?>>
-                        <label for="afb-type-post"><?php echo esc_html__( 'Post', 'a-faq-builder' ); ?></label>
+                        <input type="radio" name="afb_data[type]" id="afb-type-post" value="post" disabled="disabled">
+                        <label for="afb-type-post"><?php echo esc_html__( 'Posts (Pro)', 'a-faq-builder' ); ?></label>
                     </li>
                 </ul>
             </header>
@@ -208,5 +214,18 @@ class Register_Meta_Boxes {
         if ($column_key == 'shortcode') {
                 echo '<code id="afb-shortcode-'. esc_attr( $post_id ) .'">[A_FAQ_Builder id="' . esc_attr( $post_id ) . '"]</code>';
         }
+    }
+
+    public function afb_shortcode_meta_box_callback( $post ) {
+        // var_dump($post);
+        ob_start();
+        ?>
+        <div class="shortcode">
+            <code id="afb-shortcode-<?php echo esc_attr( $post->ID ); ?>">[A_FAQ_Builder id="<?php echo esc_attr( $post->ID ); ?>"]</code>
+        </div>
+        <?php
+        // echo '<code id="afb-shortcode-'. esc_attr( $post->ID ) .'">[A_FAQ_Builder id="' . esc_attr( $post->ID ) . '"]</code>';
+        $html = ob_get_clean();
+        echo $html;
     }
 }

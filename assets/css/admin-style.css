@@ -97,3 +97,7 @@
 .post-type-accordion_faq .shortcode code.copied {
     outline: 2px solid #2196f3;
 }
+
+#afb-shortcode .shortcode code {
+    font-size: 20px;
+}
