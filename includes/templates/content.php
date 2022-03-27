@@ -10,11 +10,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 global $post;
 
+$title_visibility = apply_filters( 'afq_title_show', __return_true(), $args['id'], $post );
+
 ob_start();
 ?>
 <div class="a-faq-builder">
     <div class="afb-inner-wrapper">
+        <?php
+        if( $title_visibility ) :
+        ?>
         <h3 class="afb-title"><?php echo get_the_title($args['id']); ?></h3>
+        <?php endif; ?>
         <ul class="afb-items">
             <?php
             if ( isset( $value['contents'] ) && ! empty( $value['contents'] ) && is_array( $value['contents'] ) && count( $value['contents'] ) > 0 ) :

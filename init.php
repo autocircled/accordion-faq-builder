@@ -2,10 +2,14 @@
 /**
  * Plugin Name: Accordion FAQ Builder
  * Plugin URI: https://devhelp.us
- * Description: Accordion FAQ Builder is a free unlimited FAQ builder plugin.
+ * Description: This is an Accordion FAQ Builder plugin which helps you to create awesome, eye-catchy unlimited FAQ accordion.
  * Version: 0.1
- * Author: autocircled
+ * Requires at least: 4.0
+ * Requires PHP:      5.6
+ * Author: autocircle
+ *
  * Text Domain: a-faq-builder
+ * Domain Path: /languages/
  *
  * @package a-faq-builder
  */

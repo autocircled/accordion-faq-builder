@@ -48,8 +48,5 @@ class Shortcode {
             include 'templates/content.php';
             return $html;
         }
-        // if ( isset( $value['type'] ) && 'post' === $value['type'] ) {
-        //     include 'templates/post.php';
-        // }
     }
 }

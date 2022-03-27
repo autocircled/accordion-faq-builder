@@ -8,6 +8,10 @@
  */
 namespace AFaqBuilder\Includes;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 use \AFaqBuilder\Includes\Helper;
 class Register_Meta_Boxes {
 
