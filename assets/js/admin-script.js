@@ -109,7 +109,11 @@ aFaqBuilder.copyShortcode = {
         }
     },
 
-    // Copy animation
+    /**
+     * Copy animation
+     *
+     * @since 0.1
+     */
     selecttextanimation: function( containerid ){
         const shortcodeContainer = document.getElementById(containerid);
         const afbCurrentNotifyContainer = shortcodeContainer.nextElementSibling;
@@ -153,6 +157,8 @@ afbDomReady( function() {
 
 /**
  * Helper functions
+ *
+ * @since 0.1
  */
 function aFaqBuilderControls() {
     const parentEl = document.querySelector("#afbItems");

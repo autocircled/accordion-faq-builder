@@ -3,7 +3,7 @@
  * Plugin Name: Accordion FAQ Builder
  * Plugin URI: https://devhelp.us
  * Description: This is an Accordion FAQ Builder plugin which helps you to create awesome, eye-catchy unlimited FAQ accordion.
- * Version: 0.1
+ * Version: 0.2
  * Requires at least: 4.0
  * Requires PHP:      5.6
  * Author: autocircle
@@ -42,7 +42,7 @@ if ( ! defined( 'AFAQBUILDER_NAMESPACE' ) ) {
 }
 
 if ( ! defined( 'AFAQBUILDER_VERSION' ) ) {
-	define( 'AFAQBUILDER_VERSION', '0.1' );
+	define( 'AFAQBUILDER_VERSION', '0.2' );
 }
 
 // Run autoloader
