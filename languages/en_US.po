@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2022-03-28 00:13+0600\n"
-"PO-Revision-Date: 2022-03-28 00:13+0600\n"
+"POT-Creation-Date: 2022-03-29 10:08+0600\n"
+"PO-Revision-Date: 2022-03-29 10:08+0600\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -15,32 +15,53 @@ msgstr ""
 "X-Poedit-KeywordsList: __(;esc_html__;_e;esc_html_e\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: includes/register-meta-boxes.php:72
+#: includes/enqueue-script.php:44
+msgid "New item"
+msgstr ""
+
+#: includes/enqueue-script.php:45
+msgid "Shortcode has been copied."
+msgstr ""
+
+#: includes/register-meta-boxes.php:76
 msgid "Accordion Type"
 msgstr ""
 
-#: includes/register-meta-boxes.php:76 includes/register-meta-boxes.php:105
+#: includes/register-meta-boxes.php:80 includes/register-meta-boxes.php:109
+#: includes/register-meta-boxes.php:146
 msgid "Content"
 msgstr ""
 
-#: includes/register-meta-boxes.php:80
+#: includes/register-meta-boxes.php:84
 msgid "Posts (Pro)"
 msgstr ""
 
-#: includes/register-meta-boxes.php:90
+#: includes/register-meta-boxes.php:94
 msgid "Item #"
 msgstr ""
 
-#: includes/register-meta-boxes.php:101
+#: includes/register-meta-boxes.php:105 includes/register-meta-boxes.php:142
 msgid "Title"
 msgstr ""
 
-#: includes/register-meta-boxes.php:123
+#: includes/register-meta-boxes.php:127
 msgid "New Item"
 msgstr ""
 
-#: includes/register-meta-boxes.php:153
+#: includes/register-meta-boxes.php:157
 msgid "Add new item"
+msgstr ""
+
+#: includes/register-meta-boxes.php:220 includes/register-meta-boxes.php:230
+msgid "Copied to clipboard"
+msgstr ""
+
+#: includes/register-post-type.php:59 includes/register-post-type.php:71
+msgid "Accordion FAQs"
+msgstr ""
+
+#: includes/register-post-type.php:60
+msgid "Accordion"
 msgstr ""
 
 #: includes/register-post-type.php:61
@@ -81,8 +102,4 @@ msgstr ""
 
 #: includes/register-post-type.php:70
 msgid "Accordion FAQ Builder"
-msgstr ""
-
-#: includes/register-post-type.php:71
-msgid "Accordion FAQs"
 msgstr ""
