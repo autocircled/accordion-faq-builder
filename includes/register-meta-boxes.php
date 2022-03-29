@@ -50,13 +50,13 @@ class Register_Meta_Boxes {
         add_meta_box(
             'afb-shortcode',
             __( 'Shortcode', 'a-faq-builder' ),
-            [ Register_Meta_Boxes::class, 'afb_shortcode_meta_box_callback' ],
+            [ $this, 'afb_shortcode_meta_box_callback' ],
             'accordion_faq'
         );
         add_meta_box(
             'afb-content',
             __( 'Add Accordion FAQ', 'a-faq-builder' ),
-            [ Register_Meta_Boxes::class, 'afb_content_meta_box_callback' ],
+            [ $this, 'afb_content_meta_box_callback' ],
             'accordion_faq'
         );
     }
