@@ -41,8 +41,8 @@ class Enqueue_Script {
         wp_enqueue_script( 'shortable', trailingslashit( AFAQBUILDER_URL ) . 'assets/js/Sortable.js', array(), '1.15.0', true );
         wp_enqueue_script( 'afb_admin_script', trailingslashit( AFAQBUILDER_URL ) . 'assets/js/admin-script.js', array( 'shortable' ), AFAQBUILDER_VERSION, true );
 		$data = array(
-			'new_item_text' => __( 'New item', 'a-faq-builder' ),
-			'copy_text' => __( 'Shortcode has been copied.', 'a-faq-builder' ),
+			'new_item_text' => esc_html__( 'New item', 'a-faq-builder' ),
+			'copy_text'     => esc_html__( 'Shortcode has been copied.', 'a-faq-builder' ),
 		);
 
 		wp_localize_script( 'afb_admin_script', 'AFB_Admin_DATA', $data );

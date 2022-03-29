@@ -139,12 +139,12 @@ class Register_Meta_Boxes {
                                     </div>
                                     <div class="item-body">
                                         <div class="row">
-                                            <label data-target="title-label" for="afb_data[contents][<?php echo esc_attr( $key ); ?>][title]">Title</label>
+                                            <label data-target="title-label" for="afb_data[contents][<?php echo esc_attr( $key ); ?>][title]"><?php echo esc_html__( 'Title', 'a-faq-builder' ); ?></label>
                                             <input type="text" data-target="title-input" id="afb_data[contents][<?php echo esc_attr( $key ); ?>][title]" name="afb_data[contents][<?php echo esc_attr( $key ); ?>][title]" value="<?php echo esc_attr( $title ); ?>">
                                         </div>
                                         <div class="row">
-                                            <label data-target="content-label" for="afb_data[contents][<?php echo esc_attr( $key ); ?>][content]">Content</label>
-                                            <textarea style="width:100%" rows="5" data-target="content-input" id="afb_data[contents][<?php echo esc_html( $key ); ?>][content]" name="afb_data[contents][<?php echo esc_attr( $key ); ?>][content]"><?php echo wp_kses_post( $content ); ?></textarea>
+                                            <label data-target="content-label" for="afb_data[contents][<?php echo esc_attr( $key ); ?>][content]"><?php echo esc_html__( 'Content', 'a-faq-builder' ); ?></label>
+                                            <textarea style="width:100%" rows="5" data-target="content-input" id="afb_data[contents][<?php echo esc_html( $key ); ?>][content]" name="afb_data[contents][<?php echo esc_attr( $key ); ?>][content]"><?php echo esc_textarea( $content ); ?></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -215,21 +215,22 @@ class Register_Meta_Boxes {
     }
 
     public function shortcode_genarator( $column_key, $post_id ) {
-        if ($column_key == 'shortcode') {
-                echo '<code id="afb-shortcode-'. esc_attr( $post_id ) .'">[A_FAQ_Builder id="' . esc_attr( $post_id ) . '"]</code>';
+        if ( $column_key == 'shortcode' ) {
+                $output = '<code id="afb-shortcode-'. esc_attr( $post_id ) .'">[A_FAQ_Builder id="' . esc_attr( $post_id ) . '"]</code>';
+                $output .= '<span id="afb-notify" class="afb-notify">' . esc_html__( 'Copied to clipboard', 'a-faq-builder' ) . '</span>';
+                echo wp_kses_post( $output );
         }
     }
 
     public function afb_shortcode_meta_box_callback( $post ) {
-        // var_dump($post);
         ob_start();
         ?>
         <div class="shortcode">
             <code id="afb-shortcode-<?php echo esc_attr( $post->ID ); ?>">[A_FAQ_Builder id="<?php echo esc_attr( $post->ID ); ?>"]</code>
+            <span id="afb-notify" class="afb-notify"><?php echo esc_html__( 'Copied to clipboard', 'a-faq-builder' ); ?></span>
         </div>
         <?php
-        // echo '<code id="afb-shortcode-'. esc_attr( $post->ID ) .'">[A_FAQ_Builder id="' . esc_attr( $post->ID ) . '"]</code>';
         $html = ob_get_clean();
-        echo $html;
+        echo wp_kses_post( $html );
     }
 }

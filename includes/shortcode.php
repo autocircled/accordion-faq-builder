@@ -46,7 +46,7 @@ class Shortcode {
 
         if ( isset( $value['type'] ) && 'content' === $value['type'] ) {
             include 'templates/content.php';
-            return $html;
+            return wp_kses_post( $html );
         }
     }
 }
