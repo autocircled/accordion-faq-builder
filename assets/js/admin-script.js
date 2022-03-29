@@ -82,11 +82,11 @@ aFaqBuilder.copyShortcode = {
         elements.forEach( (el, i) => {
             el.addEventListener( 'click', function(){
                 for( const item of elements ){
-                    if( item !== el && item.classList.contains( 'copied' ) ){
+                    if( item.classList.contains( 'copied' ) ){
                         item.classList.remove( 'copied' );
                     }
                 }
-                el.classList.toggle('copied');
+                el.classList.add('copied');
                 aFaqBuilder.copyShortcode.selecttext(el.getAttribute('id'));
             });
         } );
@@ -98,14 +98,29 @@ aFaqBuilder.copyShortcode = {
             var range = document.body.createTextRange();
             range.moveToElementText(document.getElementById(containerid));
             range.select();
+            this.selecttextanimation( containerid );
         } else if (window.getSelection) {
             var range = document.createRange();
             range.selectNode(document.getElementById(containerid));
             window.getSelection().removeAllRanges();
             window.getSelection().addRange(range);
             navigator.clipboard.writeText(document.getElementById(containerid).innerText);
-            alert( AFB_Admin_DATA.copy_text )
+            this.selecttextanimation( containerid );
         }
+    },
+
+    // Copy animation
+    selecttextanimation: function( containerid ){
+        const shortcodeContainer = document.getElementById(containerid);
+        const afbCurrentNotifyContainer = shortcodeContainer.nextElementSibling;
+        const afbAllNotifyContainer = document.querySelectorAll('.post-type-accordion_faq .shortcode .afb-notify');
+
+        afbAllNotifyContainer.forEach((el,i) => {
+            if( el.classList.contains( 'show' ) ){
+                el.classList.remove('show');
+            }
+        });
+        afbCurrentNotifyContainer.classList.add('show');
     }
 }
 

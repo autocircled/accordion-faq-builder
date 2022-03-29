@@ -102,14 +102,14 @@
     font-size: 20px;
 }
 
-.post-type-accordion_faq .shortcode #afb-notify {
+.post-type-accordion_faq .shortcode .afb-notify {
     display: none;
     color: green;
     font-weight: 500;
     margin-left: 20px;
-    animation: blinker 1s linear infinite;
+    animation: blinker 0.2s linear 3;
 }
-.post-type-accordion_faq .shortcode #afb-notify.show {
+.post-type-accordion_faq .shortcode .afb-notify.show {
     display: inline-block;
 }
 

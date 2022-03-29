@@ -217,7 +217,7 @@ class Register_Meta_Boxes {
     public function shortcode_genarator( $column_key, $post_id ) {
         if ( $column_key == 'shortcode' ) {
                 $output = '<code id="afb-shortcode-'. esc_attr( $post_id ) .'">[A_FAQ_Builder id="' . esc_attr( $post_id ) . '"]</code>';
-                $output .= '<span id="afb-notify" class="afb-notify">' . esc_html__( 'Copied to clipboard', 'a-faq-builder' ) . '</span>';
+                $output .= '<span id="afb-notify-'. esc_attr( $post_id ) .'" class="afb-notify">' . esc_html__( 'Copied to clipboard', 'a-faq-builder' ) . '</span>';
                 echo wp_kses_post( $output );
         }
     }
@@ -227,7 +227,7 @@ class Register_Meta_Boxes {
         ?>
         <div class="shortcode">
             <code id="afb-shortcode-<?php echo esc_attr( $post->ID ); ?>">[A_FAQ_Builder id="<?php echo esc_attr( $post->ID ); ?>"]</code>
-            <span id="afb-notify" class="afb-notify"><?php echo esc_html__( 'Copied to clipboard', 'a-faq-builder' ); ?></span>
+            <span id="afb-notify-<?php echo esc_attr( $post->ID ); ?>" class="afb-notify"><?php echo esc_html__( 'Copied to clipboard', 'a-faq-builder' ); ?></span>
         </div>
         <?php
         $html = ob_get_clean();
