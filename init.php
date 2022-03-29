@@ -18,11 +18,11 @@ use \AFaqBuilder\Bootstrap;
 use \AFaqBuilder\Autoloader;
 
 if ( ! defined( 'ABSPATH' ) ) {
-    exit; // Exit if accessed directly.
+	exit; // Exit if accessed directly.
 }
 
 if ( ! defined( 'AFAQBUILDER_FILE' ) ) {
-    define( 'AFAQBUILDER_FILE', __FILE__ );
+	define( 'AFAQBUILDER_FILE', __FILE__ );
 }
 
 if ( ! defined( 'AFAQBUILDER_BASENAME' ) ) {

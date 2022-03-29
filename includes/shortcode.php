@@ -4,6 +4,7 @@
  *
  * @package a-faq-builder
  */
+
 namespace AFaqBuilder\Includes;
 
 use \AFaqBuilder\Includes\Helper;
@@ -14,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 class Shortcode {
-    private static $instance;
+	private static $instance;
 
 	/**
 	 * Allows for accessing single instance of class. Class should only be constructed once per call.
@@ -31,22 +32,22 @@ class Shortcode {
 		return self::$instance;
 	}
 
-    protected function setup() {
-        add_shortcode( 'A_FAQ_Builder', [ $this, 'afb_shortcode_generator' ] );
-    }
+	protected function setup() {
+		add_shortcode( 'A_FAQ_Builder', [ $this, 'afb_shortcode_generator' ] );
+	}
 
-    public function afb_shortcode_generator( $atts = array() ) {
-        $atts = array_change_key_case( $atts );
-        $args = shortcode_atts(
-            Helper::$defaults, $atts
-        );
+	public function afb_shortcode_generator( $atts = array() ) {
+		$atts = array_change_key_case( $atts );
+		$args = shortcode_atts(
+			Helper::$defaults, $atts
+		);
 
-        $value = get_post_meta( $args['id'], '_afb_content', true );
+		$value = get_post_meta( $args['id'], '_afb_content', true );
 
 
-        if ( isset( $value['type'] ) && 'content' === $value['type'] ) {
-            include 'templates/content.php';
-            return wp_kses_post( $html );
-        }
-    }
+		if ( isset( $value['type'] ) && 'content' === $value['type'] ) {
+			include 'templates/content.php';
+			return wp_kses_post( $html );
+		}
+	}
 }
