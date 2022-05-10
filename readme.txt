@@ -4,7 +4,7 @@ Donate link: https://devhelp.us
 Tags: accordion, faq, frequently asked questions, question, answer, collapsible faq, animated faq,
 Requires at least: 4.0
 Tested up to: 5.9
-Stable tag: 0.2
+Stable tag: 0.3
 Requires PHP: 5.6
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
