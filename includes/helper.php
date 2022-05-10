@@ -35,10 +35,39 @@ class Helper {
 				$value = self::recursive_sanitize_text_field( $value );
 			}
 			else {
-				$value = sanitize_text_field( $value );
+				if ( 'content' === $key ){
+					$value = wp_kses( $value, self::allowed_html_tag() );
+				} else {
+					$value = sanitize_text_field( $value );
+				}
 			}
 		}
 
 		return $array;
+	}
+
+	/**
+	 * Iframe allowed for Youtube Video
+	 *
+	 * @since 0.2
+	 * @return array
+	 */
+	public static function allowed_html_tag() {
+		global $allowedposttags;
+
+		$iframe = array(
+			'iframe' => array(
+				'src' => array (),
+				'width' => array (),
+				'height' => array (),
+				'title' => array(),
+				'allow' => array(),
+				'frameborder' => array(),
+				'allowFullScreen' => array() // add any other attributes you wish to allow
+			)
+		);
+
+		$allowed_html = array_merge( $allowedposttags, $iframe );
+		return $allowed_html;
 	}
 }

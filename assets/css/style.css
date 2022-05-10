@@ -42,7 +42,7 @@
     display: none;
 }
 .afb-item-content {
-    background: rgb(207, 228, 177);
+    /* background: rgb(207, 228, 177); */
     padding: 0 15px;
 }
 .a-faq-builder li.afb-item {
