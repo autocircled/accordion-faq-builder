@@ -41,10 +41,10 @@ class Register_Meta_Boxes {
 	protected function setup() {
 		add_action( 'add_meta_boxes', [ $this, 'add_meta_boxes' ] );
 		add_action( 'save_post', [ $this, 'save_afb_content_meta_box_data' ] );
-		add_filter('manage_accordion_faq_posts_columns', function( $columns ) {
-			return array_merge( $columns, ['shortcode' => __('Shortcode', 'a-faq-builder')] );
-		});
-		add_action('manage_accordion_faq_posts_custom_column', [ $this, 'shortcode_genarator' ], 10, 2);
+		add_filter( 'manage_accordion_faq_posts_columns', function( $columns ) {
+			return array_merge( $columns, ['shortcode' => __( 'Shortcode', 'a-faq-builder' )] );
+		} );
+		add_action( 'manage_accordion_faq_posts_custom_column', [ $this, 'shortcode_genarator' ], 10, 2 );
 	}
 
 	public function add_meta_boxes() {
@@ -68,9 +68,9 @@ class Register_Meta_Boxes {
 		wp_nonce_field( 'afb_content_nonce', 'afb_content_nonce' );
 
 		$value = get_post_meta( $post->ID, '_afb_content', true );
-
 		$type = isset( $value['type'] ) && ! empty( $value['type'] ) ? $value['type'] : Helper::$defaults['type'];
 		$selected_template_id = isset( $value['template'] ) && ! empty( $value['template'] ) ? $value['template'] : Helper::$defaults['template'];
+		$selected_bullet_type = isset( $value['bullet_type'] ) && ! empty( $value['bullet_type'] ) ? $value['bullet_type'] : Helper::$defaults['bullet_type'];
 		$contents = isset( $value['contents'] ) && ! empty( $value['contents'] ) && is_array( $value['contents'] ) ? $value['contents'] : array(); 
 		?>
 		<div class="afb-content-wrapper">
@@ -99,6 +99,19 @@ class Register_Meta_Boxes {
 						}
 						?>
 					</select>
+				</div>
+				<div class="ctrl ctrl-bullet-type">
+					<h3 class="section-title"><?php echo esc_html__( 'Bullet Type', 'a-faq-builder' ); ?></h3>
+					<ul>
+						<li>
+							<input type="radio" name="afb_data[bullet_type]" id="afb-bullet-icon" value="icon" <?php echo $selected_bullet_type && 'icon' === $selected_bullet_type ? esc_attr( 'checked' ) : ''; ?> >
+							<label for="afb-bullet-icon"><?php echo esc_html__( 'Icon', 'a-faq-builder' ); ?></label>
+						</li>
+						<li>
+							<input type="radio" name="afb_data[bullet_type]" id="afb-bullet-number" value="number" <?php echo $selected_bullet_type && 'number' === $selected_bullet_type ? esc_attr( 'checked' ) : ''; ?>>
+							<label for="afb-bullet-number"><?php echo esc_html__( 'Number', 'a-faq-builder' ); ?></label>
+						</li>
+					</ul>
 				</div>
 			</div>
 			<div class="content-area">

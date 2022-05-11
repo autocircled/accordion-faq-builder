@@ -13,7 +13,7 @@ global $post;
 $title_visibility = apply_filters( 'afq_title_show', __return_true(), $args['id'], $post );
 
 $template = isset( $value['template'] ) && !empty( $value['template'] ) ? $value['template'] : false;
-
+$selected_bullet_type = isset( $value['bullet_type'] ) && ! empty( $value['bullet_type'] ) ? $value['bullet_type'] : false;
 ob_start();
 ?>
 <div class="a-faq-builder <?php echo $template ? esc_attr( 'temp' . $template ) : ''; ?>">
@@ -35,8 +35,13 @@ ob_start();
 							<div class="afb-item-inner">
 								<div class="item-header">
 										<a class="afb-item-title" href="#afb-item-<?php echo esc_attr( $key ); ?>">
+											<?php if ( $selected_bullet_type && 'number' === $selected_bullet_type ) { ?>
 											<span class="number"><?php echo esc_attr( ( $key + 1 ) . '.' ); ?></span>
+											<?php } 
+											if ( $selected_bullet_type && 'icon' === $selected_bullet_type ) {
+											?>
 											<span class="left-icon"><i class="fa-solid fa-thumbs-up"></i></span>
+											<?php } ?>
 											<span class="afb-title"><?php echo esc_html( $item_title ); ?></span>
 											<span class="right-icon"><i class="fa-solid fa-plus"></i></span>
 										</a>

@@ -20,6 +20,7 @@ class Helper {
 		'position' => 'vertical',
 		'type' => 'content',
 		'template' => '1',
+		'bullet_type' => 'icon',
 	);
 
 	public static function get_all_templates() {
