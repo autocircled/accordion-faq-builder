@@ -36,8 +36,9 @@ ob_start();
 								<div class="item-header">
 										<a class="afb-item-title" href="#afb-item-<?php echo esc_attr( $key ); ?>">
 											<span class="number"><?php echo esc_attr( ( $key + 1 ) . '.' ); ?></span>
+											<span class="left-icon"><i class="fa-solid fa-thumbs-up"></i></span>
 											<span class="afb-title"><?php echo esc_html( $item_title ); ?></span>
-											<span class="dashicons dashicons-arrow-right-alt direction-move"></span>
+											<span class="right-icon"><i class="fa-solid fa-plus"></i></span>
 										</a>
 								</div>
 								<div class="afb-item-body">
