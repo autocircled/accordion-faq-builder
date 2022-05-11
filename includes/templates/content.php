@@ -12,9 +12,11 @@ global $post;
 
 $title_visibility = apply_filters( 'afq_title_show', __return_true(), $args['id'], $post );
 
+$template = isset( $value['template'] ) && !empty( $value['template'] ) ? $value['template'] : false;
+
 ob_start();
 ?>
-<div class="a-faq-builder">
+<div class="a-faq-builder <?php echo $template ? esc_attr( 'temp' . $template ) : ''; ?>">
 	<div class="afb-inner-wrapper">
 		<?php
 		if( $title_visibility ) :

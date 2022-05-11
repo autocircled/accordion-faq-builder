@@ -70,22 +70,37 @@ class Register_Meta_Boxes {
 		$value = get_post_meta( $post->ID, '_afb_content', true );
 
 		$type = isset( $value['type'] ) && ! empty( $value['type'] ) ? $value['type'] : Helper::$defaults['type'];
+		$selected_template_id = isset( $value['template'] ) && ! empty( $value['template'] ) ? $value['template'] : Helper::$defaults['template'];
 		$contents = isset( $value['contents'] ) && ! empty( $value['contents'] ) && is_array( $value['contents'] ) ? $value['contents'] : array(); 
 		?>
 		<div class="afb-content-wrapper">
-			<header class="meta-box-header">
-				<h3 class="section-title"><?php echo esc_html__( 'Accordion Type', 'a-faq-builder' ); ?></h3>
-				<ul>
-					<li>
-						<input type="radio" name="afb_data[type]" id="afb-type-content" value="content" <?php echo $type && 'content' === $type ? esc_attr( 'checked' ) : ''; ?> >
-						<label for="afb-type-content"><?php echo esc_html__( 'Content', 'a-faq-builder' ); ?></label>
-					</li>
-					<li>
-						<input type="radio" name="afb_data[type]" id="afb-type-post" value="post" disabled="disabled">
-						<label for="afb-type-post"><?php echo esc_html__( 'Posts (Pro)', 'a-faq-builder' ); ?></label>
-					</li>
-				</ul>
-			</header>
+			<div class="meta-box-controls">
+				<div class="ctrl ctrl-accordion-type">
+					<h3 class="section-title"><?php echo esc_html__( 'Accordion Type', 'a-faq-builder' ); ?></h3>
+					<ul>
+						<li>
+							<input type="radio" name="afb_data[type]" id="afb-type-content" value="content" <?php echo $type && 'content' === $type ? esc_attr( 'checked' ) : ''; ?> >
+							<label for="afb-type-content"><?php echo esc_html__( 'Content', 'a-faq-builder' ); ?></label>
+						</li>
+						<li>
+							<input type="radio" name="afb_data[type]" id="afb-type-post" value="post" disabled="disabled">
+							<label for="afb-type-post"><?php echo esc_html__( 'Posts (Pro)', 'a-faq-builder' ); ?></label>
+						</li>
+					</ul>
+				</div>
+				<div class="ctrl ctrl-template">
+					<h3 class="section-title"><?php echo esc_html__( 'Template', 'a-faq-builder' ); ?></h3>
+					<select name="afb_data[template]" id="afaqbuilder_template">
+						<?php
+						foreach( Helper::get_all_templates() as $key => $template ) {
+							?>
+							<option value="<?php echo esc_attr( $key ); ?>" <?php echo $key == $selected_template_id ? esc_attr( 'selected' ) : ''; ?> <?php //echo $key > 1 ? esc_attr( 'disabled' ) : ''; ?>><?php echo esc_html( $template ); ?></option>
+							<?php
+						}
+						?>
+					</select>
+				</div>
+			</div>
 			<div class="content-area">
 				<div class="clonable-content" style="display: none;">
 					<li id="clonable-item" class="afb--item afb-clonable-item">
