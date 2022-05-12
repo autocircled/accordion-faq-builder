@@ -1,5 +1,7 @@
 .a-faq-builder {
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-size: 16px;
+    line-height: 1.2;
 }
 .a-faq-builder ul.afb-items {
     list-style: none;
@@ -13,24 +15,18 @@
     font-weight: 400;
 }
 .a-faq-builder .afb-items .afb-item-title {
-    margin: 0;
-    line-height: 1.2;
     font-weight: 600;
     display: flex;
+    column-gap: 10px;
     align-items: center;
     text-decoration: none;
     color: #000;
-    padding: 15px 30px;
+    padding: 15px 20px;
     outline: none;
 }
 .a-faq-builder .afb-items .afb-item-title:active,
 .a-faq-builder .afb-items .afb-item-title:focus {
     outline: auto;
-}
-.a-faq-builder .afb-item-title span.afb-title {
-    flex-grow: 1;
-    margin-bottom: 5px;
-    margin-left: 10px;
 }
 
 .a-faq-builder .afb-item-content p:first-child {
@@ -40,287 +36,36 @@
     margin-bottom: 0;
 }
 .a-faq-builder .afb-item-body {
-    padding: 15px 30px;
-    display: none;
+    max-height: 0;
+    transition: all 0.2s ease;
+    overflow: hidden;
+    padding: 0 15px;
+    position: relative;
+}
+.a-faq-builder li.afb-item.active .afb-item-body {
+    max-height: 150px;
+    padding: 15px;
 }
 .a-faq-builder .afb-item-content {
     padding: 0 15px;
 }
-.a-faq-builder li.afb-item {
-    margin-bottom: 5px;
-    position: relative;
-}
-.a-faq-builder li.afb-item.active .afb-item-body {
-    display: block;
-}
 .a-faq-builder li.afb-item.active .direction-move {
     transform: rotate(90deg);
 }
-.a-faq-builder .afb-items li.afb-item .number {
-    margin-right: 10px;
-}
-.a-faq-builder .afb-sub-title{
-    padding-left: 7px;
-}
 
-.a-faq-builder .right-icon {
-    position: absolute;
-    right: 30px;
-}
-
-/**
- * Temp 1
- */
-.temp1 .afb-items .afb-item-title {
-    margin: 0;
-    line-height: 1.2;
-    font-weight: 600;
-    /* background-color: #f7f9fb; */
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: #000;
-    padding: 15px 30px;
-    outline: none;
-}
-.temp1 .afb-item:hover {
-    background: rgb(234, 230, 230);
-}
-.temp1 .afb-item{
-    transition: 0.3s ease-in-out;
-}
-.temp1 .afb-items .afb-item-title:active,
-.temp1 .afb-items .afb-item-title:focus {
-    outline: auto;
-}
-.temp1 .afb-item-title span.afb-title {
+.a-faq-builder li.afb-item {margin-bottom: 10px;}
+.a-faq-builder .item-header {transition: all 0.2s ease;}
+.a-faq-builder .item-header .afb-title {
     flex-grow: 1;
 }
 
-.temp1 .afb-item-content p:first-child {
-    margin-top: 0;
-}
-.temp1 .afb-item-content p:last-child {
-    margin-bottom: 0;
-}
-.temp1 .afb-item-body{
-    background-color: white;
-}
-.temp1 .afb-item-content {
-    padding: 0 15px;
+
+.a-faq-builder.temp1 .active .item-header,
+.a-faq-builder.temp1 .item-header:hover {
+    background: #ebebeb;
 }
 
-/**
- * Temp 2
- */
-.temp2 .afb-item.active .item-header {
-    border-bottom-color: rgb(234, 230, 230);
-    background-color: #a99474;
-}
- .temp2 ul.afb-items {
-    list-style: none;
-    padding: 0;
-    text-decoration: none;
-    position: relative;
-    /* height: 327px;
-    background-color: lightpink; */
-} 
-.temp2 .afb-item .afb-item-title{
-    margin: 0;
-    line-height: 1.2;
-    font-weight: 600;
-    /* background-color: #f7f9fb; */
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: black;
-    padding: 15px 30px;
-    outline: none;
+/* .a-faq-builder li.afb-item.active .item-header {border-bottom: 1px solid #adadad;} */
 
-} 
-.temp2 .afb-item:hover .afb-item-title{
-    color: white;
-} 
-.temp2 .afb-item{
-    margin-top: 5px;
-    transition: 0.3s ease-in-out;
-}
-.temp2 .afb-item:hover{
-    background: rgb(131, 131, 131);
-}
-.temp2 .afb-item-body{
-    background-color: rgb(236, 228, 228);
-}
+.a-faq-builder.temp1 .afb-item-inner {border: 1px solid #adadad;}
 
-/**
- * Temp 3
- */
-.temp3 ul.afb-items {
-    list-style: none;
-    padding: 0;
-    text-decoration: none;
-    position: relative;
-    /* height: 327px;
-    background-color: lightpink; */
-} 
-.temp3 .afb-item .afb-item-title{
-    margin: 0;
-    line-height: 1.2;
-    font-weight: 600;
-    /* background-color: #f7f9fb; */
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: white;
-    padding: 15px 30px;
-    outline: none;
-
-} 
-.temp3 .afb-item {
-    background-image: linear-gradient(to right, rgb(25 44 27), rgb(132, 167, 132));
-}
-.temp3 .afb-sub-title:hover {
-    color: rgb(169, 41, 41);
-}
-.temp3 .afb-sub-title{
-    transition: 0.5s ease-in-out;
-}
-.temp3 .afb-item-body{
-    background-color: white;
-}
-
-/**
- * Temp 4
- */
-.temp4 .afb-items{
-    position: relative;
-}
-.temp4 .afb-item{
-    border-radius: 0px;
-}
-.temp4 .afb-item .afb-item-title{
-    margin: 0;
-    line-height: 1.2;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: white;
-    padding: 15px 30px;
-    outline: none;
-}
-.temp4 .afb-item .item-header {
-    background-color: rgb(41, 37, 37);
-}
-.temp4 .afb-item.active .item-header {
-    border-bottom-color: rgb(234, 230, 230);
-    background-color: #a99474;
-}
-.temp4 .afb-item .afb-item-body{
-    background-color: white;
-}
-
-/**
- * Temp 5
- */
-.temp5 .afb-item .afb-item-title{
-    display: flex;
-    color: black;
-    text-decoration: none;
-    outline: none;
-    margin: 0;
-    font-weight: 600;
-    line-height: 1.2;
-    padding: 15px 30px;
-    align-items: center;
-}
-.temp5 .afb-item{
-    background-color: ghostwhite;
-    border-radius: 0px;
-    transition: 0.3s ease-in-out;
-}
-.temp5 .afb-item:hover {
-    background-color: rgb(162, 195, 199);
-}
-
-/**
- * Temp 6
- */
-.temp6 .afb-item .afb-item-title{
-    display: flex;
-    outline: none;
-    text-decoration: none;
-    align-items: center;
-    color: black;
-    font-weight: 600;
-    line-height: 1.2;
-    padding: 15px 30px;
-    margin: 0;
-}
-.temp6 .afb-item{
-    background-color: white;
-    border-radius: 0px;
-}
-.temp6 .item-header {
-    border: 1px solid #000;
-}
-.temp6 .afb-item.active .item-header {
-    background-color: #a99474;
-    border-color: #a99474;
-}
-.temp6 .afb-item.active .item-header a.afb-item-title {
-    color: #fff;
-}
-.temp6 .afb-item .afb-item-body {
-    border: 1px solid transparent;
-}
-.temp6 .afb-item.active .afb-item-body {
-    border-color: #a99474;
-}
-
-/**
- * Temp 7
- */
- .temp7 .afb-item .afb-item-title{
-    display: flex;
-    outline: none;
-    text-decoration: none;
-    align-items: center;
-    color: black;
-    font-weight: 600;
-    line-height: 1.2;
-    padding: 15px 30px;
-    margin: 0;
- }
- .temp7 .afb-item{
-     border-radius: 0px;
-     background-color: #3c9a90;
- }
- .temp7 .afb-item-body{
-     background-color: #86c8c1;
- }
-.temp7 .afb-item-body .afb-item-content{
-    color: white;
-}
-
- /**
- * Temp 8
- */
- .temp8 .afb-item .afb-item-title{
-    display: flex;
-    outline: none;
-    text-decoration: none;
-    align-items: center;
-    color: white;
-    font-weight: 600;
-    line-height: 1.2;
-    padding: 15px 30px;
-    margin: 0;
- }
- .temp8 .afb-item{
-     border-radius: 0px;
-     background-color: gray;
- }
- .temp8 .afb-item-body{
-     background-color: white;
- }
