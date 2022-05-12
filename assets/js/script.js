@@ -3,6 +3,7 @@ var AFBFront = AFBFront || {};
 AFBFront.accordion = {
 	init: function () {
 		this.create();
+		this.beforeAnimate();
 	},
 
 	create: function () {
@@ -24,9 +25,35 @@ AFBFront.accordion = {
 						}
 					}
 					el.classList.toggle("active");
+					AFBFront.accordion.startAnimate(afb_items);
 				});
 			});
 		});
+	},
+
+	beforeAnimate: function () {
+		const items = document.querySelectorAll(".a-faq-builder .afb-items");
+		items.forEach((el, i) => {
+			const items = el.querySelectorAll(".afb-item");
+			items.forEach((childEl, j) => {
+				const parentEl = childEl.querySelector(".afb-item-body");
+				const elHeight = childEl.querySelector(".afb-item-content");
+				parentEl.setAttribute("max-height", elHeight.offsetHeight);
+			});
+		});
+	},
+
+	startAnimate: function (afb_items) {
+		for (const item of afb_items) {
+			const targetEl = item.querySelector(".afb-item-body");
+			const elHeight = targetEl.getAttribute("max-height");
+
+			if (item.classList.contains("active")) {
+				targetEl.style.maxHeight = parseFloat(elHeight) + 30 + "px";
+			} else {
+				targetEl.style.maxHeight = "";
+			}
+		}
 	},
 };
 
