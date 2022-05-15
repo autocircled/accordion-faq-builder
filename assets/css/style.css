@@ -164,3 +164,15 @@
 .a-faq-builder.temp6 li.afb-item.active .afb-item-body {
     border-top: 1px solid #e8e8e8;
 }
+
+/**
+ * Template 7
+ */
+.a-faq-builder.temp7 li.afb-item .item-header,
+.a-faq-builder.temp7 li.afb-item .afb-item-body {
+    border-radius: 10px;
+    background: #fff;
+}
+.a-faq-builder.temp7 li.afb-item.active .item-header {
+    margin-bottom: 10px;
+}
