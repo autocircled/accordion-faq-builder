@@ -98,20 +98,20 @@
 }
 
 /**
- * Template 3
+ * Template 4
  */
-.a-faq-builder.temp3 .afb-item {
+.a-faq-builder.temp4 .afb-item {
     background-color: #333333;
 }
-.a-faq-builder.temp3 .afb-items .afb-item-title {
+.a-faq-builder.temp4 .afb-items .afb-item-title {
     color: #8c8c8c;
 }
-.a-faq-builder.temp3 .afb-item-content {
+.a-faq-builder.temp4 .afb-item-content {
     color: #999999;
 }
-.a-faq-builder.temp3 .afb-items .afb-item.active .afb-item-title {
+.a-faq-builder.temp4 .afb-items .afb-item.active .afb-item-title {
     color: #fff;
 }
-.a-faq-builder.temp3 .afb-item.active {
+.a-faq-builder.temp4 .afb-item.active {
     background-color: #444444;
 }
