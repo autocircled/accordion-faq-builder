@@ -134,3 +134,23 @@
 .a-faq-builder.temp4 .afb-item.active {
     background-color: #444444;
 }
+
+/**
+ * Template 5
+ */
+.a-faq-builder.temp5 .afb-item {
+    border-bottom: 1px solid #ddd;
+    margin: 0;
+    transition: all 0.2s ease;
+}
+.a-faq-builder.temp5 .afb-item.active .afb-item-body {
+    background-color: #ddd;
+}
+.a-faq-builder.temp5 .afb-item:not(.active):hover {
+    border-bottom-width: 5px;
+}
+.a-faq-builder.temp5 .afb-item.active,
+.a-faq-builder.temp5 .afb-item.active:hover {
+    border-bottom-width: 1px;
+}
+
