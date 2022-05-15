@@ -29,6 +29,11 @@ AFBFront.accordion = {
 				});
 			});
 		});
+
+		// On screen resize fixed accordion body height
+		window.addEventListener("resize", function () {
+			AFBFront.accordion.beforeAnimate();
+		});
 	},
 
 	beforeAnimate: function () {

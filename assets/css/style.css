@@ -172,6 +172,7 @@
 .a-faq-builder.temp7 li.afb-item .afb-item-body {
     border-radius: 10px;
     background: #fff;
+    color: #000;
 }
 .a-faq-builder.temp7 li.afb-item.active .item-header {
     margin-bottom: 10px;
