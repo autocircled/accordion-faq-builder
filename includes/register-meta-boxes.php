@@ -111,6 +111,10 @@ class Register_Meta_Boxes {
 							<input type="radio" name="afb_data[bullet_type]" id="afb-bullet-number" value="number" <?php echo $selected_bullet_type && 'number' === $selected_bullet_type ? esc_attr( 'checked' ) : ''; ?>>
 							<label for="afb-bullet-number"><?php echo esc_html__( 'Number', 'a-faq-builder' ); ?></label>
 						</li>
+						<li>
+							<input type="radio" name="afb_data[bullet_type]" id="afb-bullet-none" value="none" <?php echo $selected_bullet_type && 'none' === $selected_bullet_type ? esc_attr( 'checked' ) : ''; ?>>
+							<label for="afb-bullet-none"><?php echo esc_html__( 'None', 'a-faq-builder' ); ?></label>
+						</li>
 					</ul>
 				</div>
 			</div>
