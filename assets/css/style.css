@@ -98,6 +98,25 @@
 }
 
 /**
+ * Template 3
+ */
+.a-faq-builder.temp3 .afb-item {
+    border: 1px solid #e8e8e8;
+    border-bottom: 0;
+    margin: 0;
+}
+.a-faq-builder.temp3 .afb-item:last-child {
+    border-bottom: 1px solid #ddd;
+}
+.a-faq-builder.temp3 .afb-item.active .item-header {
+    background-color: transparent;
+    background-image: linear-gradient(90deg, #8467ef 0%, #ff49a4 100%);
+}
+.a-faq-builder.temp3 .afb-items .afb-item.active .afb-item-title {
+    color: #fff;
+}
+
+/**
  * Template 4
  */
 .a-faq-builder.temp4 .afb-item {
