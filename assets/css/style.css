@@ -54,17 +54,45 @@
 
 .a-faq-builder li.afb-item {margin-bottom: 10px;}
 .a-faq-builder .item-header {transition: all 0.2s ease;}
-.a-faq-builder .item-header .afb-title {
+.a-faq-builder .item-header .afb-title-wrap {
     flex-grow: 1;
 }
 
-
+/**
+ * Template 1
+ */
 .a-faq-builder.temp1 .active .item-header,
 .a-faq-builder.temp1 .item-header:hover {
     background: #ebebeb;
 }
 
-/* .a-faq-builder li.afb-item.active .item-header {border-bottom: 1px solid #adadad;} */
-
 .a-faq-builder.temp1 .afb-item-inner {border: 1px solid #adadad;}
 
+/**
+ * Template 2
+ */
+.temp2 .afb-item .item-header {
+    border: 1px solid #E7EEFD;
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+.temp2 .afb-item.active .item-header,
+.temp2 .afb-item:hover .item-header {
+    border-color: #444;
+}
+.temp2 .afb-item.active .item-header,
+.temp2 .afb-item:hover .item-header {
+    background: #444;
+}
+ .temp2 .afb-item .afb-title-wrap {
+    color: #4F6592;
+    font-weight: 500;
+}
+.temp2 .afb-item.active .item-header .left-icon,
+.temp2 .afb-item:hover .item-header .left-icon,
+.temp2 .afb-item.active .item-header .afb-title-wrap,
+.temp2 .afb-item:hover .item-header .afb-title-wrap,
+.temp2 .afb-item.active .item-header .right-icon,
+.temp2 .afb-item:hover .item-header .right-icon {
+    color: #fff;
+}

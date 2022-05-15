@@ -42,7 +42,7 @@ ob_start();
 											?>
 											<span class="left-icon"><i class="fa-solid fa-thumbs-up"></i></span>
 											<?php } ?>
-											<span class="afb-title"><?php echo esc_html( $item_title ); ?></span>
+											<span class="afb-title-wrap"><?php echo esc_html( $item_title ); ?></span>
 											<span class="right-icon"><i class="fa-solid fa-plus"></i></span>
 										</a>
 								</div>
