@@ -37,7 +37,7 @@
 }
 .a-faq-builder .afb-item-body {
     max-height: 0;
-    transition: all 0.2s ease;
+    transition: max-height,padding 0.2s ease;
     overflow: hidden;
     padding: 0 15px;
     position: relative;
@@ -106,7 +106,7 @@
     margin: 0;
 }
 .a-faq-builder.temp3 .afb-item:last-child {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #e8e8e8;
 }
 .a-faq-builder.temp3 .afb-item.active .item-header {
     background-color: transparent;
@@ -139,12 +139,12 @@
  * Template 5
  */
 .a-faq-builder.temp5 .afb-item {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #e8e8e8;
     margin: 0;
     transition: all 0.2s ease;
 }
 .a-faq-builder.temp5 .afb-item.active .afb-item-body {
-    background-color: #ddd;
+    background-color: #e8e8e8;
 }
 .a-faq-builder.temp5 .afb-item:not(.active):hover {
     border-bottom-width: 5px;
@@ -154,3 +154,13 @@
     border-bottom-width: 1px;
 }
 
+/**
+ * Template 6
+ */
+.a-faq-builder.temp6 li.afb-item {
+    border: 1px solid #e8e8e8;
+    border-radius: 6px;
+}
+.a-faq-builder.temp6 li.afb-item.active .afb-item-body {
+    border-top: 1px solid #e8e8e8;
+}
