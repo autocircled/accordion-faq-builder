@@ -71,28 +71,28 @@
 /**
  * Template 2
  */
-.temp2 .afb-item .item-header {
+ .a-faq-builder.temp2 .afb-item .item-header {
     border: 1px solid #E7EEFD;
     background: #f1f1f1;
     border-radius: 10px;
 }
-.temp2 .afb-item.active .item-header,
+.a-faq-builder.temp2 .afb-item.active .item-header,
 .temp2 .afb-item:hover .item-header {
     border-color: #444;
 }
-.temp2 .afb-item.active .item-header,
-.temp2 .afb-item:hover .item-header {
+.a-faq-builder.temp2 .afb-item.active .item-header,
+.a-faq-builder.temp2 .afb-item:hover .item-header {
     background: #444;
 }
- .temp2 .afb-item .afb-title-wrap {
+.a-faq-builder.temp2 .afb-item .afb-title-wrap {
     color: #4F6592;
     font-weight: 500;
 }
-.temp2 .afb-item.active .item-header .left-icon,
-.temp2 .afb-item:hover .item-header .left-icon,
-.temp2 .afb-item.active .item-header .afb-title-wrap,
-.temp2 .afb-item:hover .item-header .afb-title-wrap,
-.temp2 .afb-item.active .item-header .right-icon,
-.temp2 .afb-item:hover .item-header .right-icon {
+.a-faq-builder.temp2 .afb-item.active .item-header .left-icon,
+.a-faq-builder.temp2 .afb-item:hover .item-header .left-icon,
+.a-faq-builder.temp2 .afb-item.active .item-header .afb-title-wrap,
+.a-faq-builder.temp2 .afb-item:hover .item-header .afb-title-wrap,
+.a-faq-builder.temp2 .afb-item.active .item-header .right-icon,
+.a-faq-builder.temp2 .afb-item:hover .item-header .right-icon {
     color: #fff;
 }
