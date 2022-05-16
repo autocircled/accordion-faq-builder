@@ -50,7 +50,7 @@ class Enqueue_Script {
 	}
 	
 	public function public_scripts() {
-		wp_enqueue_style( 'fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css', array(), '6.0.0', 'all' );
+		wp_enqueue_style( 'fontawesome', trailingslashit( AFAQBUILDER_URL ) .'assets/css/fontawesome/css/all.min.css', array(), '6.1.1', 'all' );
 		wp_enqueue_style( 'afb_style', trailingslashit( AFAQBUILDER_URL ) . 'assets/css/style.css', array(), AFAQBUILDER_VERSION, 'all' );
 		wp_enqueue_script( 'afb_script', trailingslashit( AFAQBUILDER_URL ) . 'assets/js/script.js', array(), AFAQBUILDER_VERSION, true );
 
