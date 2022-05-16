@@ -163,7 +163,6 @@ class Register_Meta_Boxes {
 								<div class="afb--item-wrapper">
 									<div class="item-header">
 										<div class="afb--ls">
-											<h3 class="item-counter"><?php echo empty( $title ) ? esc_html__( 'New Item', 'a-faq-builder' ) : esc_html( $title ); ?></h3>
 											<div class="active-handle">
 												<input type="radio" name="afb_data[active]" id="afb_data[contents][<?php echo esc_attr( $key ); ?>][active]" value="<?php echo esc_attr( $key ); ?>" <?php echo $active_id == $key ? esc_attr( 'checked' ) : ''; ?>>
 												<label for="afb_data[contents][<?php echo esc_attr( $key ); ?>][active]">
@@ -171,6 +170,7 @@ class Register_Meta_Boxes {
 													<span class="label-text"><?php echo esc_html__( 'Active', 'a-faq-builder' )?></span>
 												</label>
 											</div>
+											<h3 class="item-counter"><?php echo empty( $title ) ? esc_html__( 'New Item', 'a-faq-builder' ) : esc_html( $title ); ?></h3>
 										</div>
 										<div class="afb--rs">
 											<span class="hover-control">
