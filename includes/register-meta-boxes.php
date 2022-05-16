@@ -95,7 +95,7 @@ class Register_Meta_Boxes {
 						<?php
 						foreach( Helper::get_all_templates() as $key => $template ) {
 							?>
-							<option value="<?php echo esc_attr( $key ); ?>" <?php echo $key == $selected_template_id ? esc_attr( 'selected' ) : ''; ?> <?php //echo $key > 1 ? esc_attr( 'disabled' ) : ''; ?>><?php echo esc_html( $template ); ?></option>
+							<option value="<?php echo esc_attr( $key ); ?>" <?php echo $key == $selected_template_id ? esc_attr( 'selected' ) : ''; ?> <?php echo $key > 3 ? esc_attr( 'disabled' ) : ''; ?>><?php echo esc_html( $template ); ?></option>
 							<?php
 						}
 						?>
