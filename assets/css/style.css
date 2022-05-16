@@ -58,6 +58,29 @@
 .a-faq-builder .item-header .afb-title-wrap {
     flex-grow: 1;
 }
+/* width */
+.a-faq-builder li.afb-item.active .afb-item-body::-webkit-scrollbar {
+    opacity: 0;
+    width: 10px;
+}
+.a-faq-builder li.afb-item.active .afb-item-body:hover::-webkit-scrollbar {
+    opacity: 1;
+}
+  
+/* Track */
+.a-faq-builder li.afb-item.active .afb-item-body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+  
+/* Handle */
+.a-faq-builder li.afb-item.active .afb-item-body::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+}
+  
+/* Handle on hover */
+.a-faq-builder li.afb-item.active .afb-item-body::-webkit-scrollbar-thumb:hover {
+    background: #a5a5a5;
+}
 
 /**
  * Template 1
