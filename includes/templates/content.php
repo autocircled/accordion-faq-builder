@@ -14,6 +14,7 @@ $title_visibility = apply_filters( 'afq_title_show', __return_true(), $args['id'
 
 $template = isset( $value['template'] ) && !empty( $value['template'] ) ? $value['template'] : false;
 $selected_bullet_type = isset( $value['bullet_type'] ) && ! empty( $value['bullet_type'] ) ? $value['bullet_type'] : false;
+$active_id = isset( $value['active'] ) && !empty( $value['active'] ) ? $value['active'] : false;
 ob_start();
 ?>
 <div class="a-faq-builder <?php echo $template ? esc_attr( 'temp' . $template ) : ''; ?>">
@@ -31,7 +32,7 @@ ob_start();
 					$item_content = isset( $item['content'] ) ? $item['content'] : '';
 					if ( ! empty( $item_title ) && ! empty( $item_content ) ) :
 						?>
-						<li id="afb-item-<?php echo esc_attr( $key ); ?>" class="afb-item afb-item-<?php echo esc_attr( $key ); ?>">
+						<li id="afb-item-<?php echo esc_attr( $key ); ?>" class="afb-item afb-item-<?php echo esc_attr( $key ); ?> <?php echo $active_id == $key ? esc_attr( 'active' ) : ''; ?>">
 							<div class="afb-item-inner">
 								<div class="item-header">
 										<a class="afb-item-title" href="#afb-item-<?php echo esc_attr( $key ); ?>">

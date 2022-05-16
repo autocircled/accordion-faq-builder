@@ -72,6 +72,7 @@ class Register_Meta_Boxes {
 		$selected_template_id = isset( $value['template'] ) && ! empty( $value['template'] ) ? $value['template'] : Helper::$defaults['template'];
 		$selected_bullet_type = isset( $value['bullet_type'] ) && ! empty( $value['bullet_type'] ) ? $value['bullet_type'] : Helper::$defaults['bullet_type'];
 		$contents = isset( $value['contents'] ) && ! empty( $value['contents'] ) && is_array( $value['contents'] ) ? $value['contents'] : array(); 
+		$active_id = isset( $value['active'] ) && ! empty( $value['active'] ) ? $value['active'] : false; 
 		?>
 		<div class="afb-content-wrapper">
 			<div class="meta-box-controls">
@@ -117,6 +118,11 @@ class Register_Meta_Boxes {
 						</li>
 					</ul>
 				</div>
+				<div class="ctrl ctrl-expand-collapse">
+					<ul>
+						<li><span class="button button-primary afb_data_expand_all"><?php echo esc_html__( 'Expand All', 'a-faq-builder' ); ?></span></li>
+						<li><span class="button button-primary afb_data_collapse_all"><?php echo esc_html__( 'Collapse All', 'a-faq-builder' ); ?></span></li>
+				</div>
 			</div>
 			<div class="content-area">
 				<div class="clonable-content" style="display: none;">
@@ -158,6 +164,13 @@ class Register_Meta_Boxes {
 									<div class="item-header">
 										<div class="afb--ls">
 											<h3 class="item-counter"><?php echo empty( $title ) ? esc_html__( 'New Item', 'a-faq-builder' ) : esc_html( $title ); ?></h3>
+											<div class="active-handle">
+												<input type="radio" name="afb_data[active]" id="afb_data[contents][<?php echo esc_attr( $key ); ?>][active]" value="<?php echo esc_attr( $key ); ?>" <?php echo $active_id == $key ? esc_attr( 'checked' ) : ''; ?>>
+												<label for="afb_data[contents][<?php echo esc_attr( $key ); ?>][active]">
+													<span class="circle"></span>
+													<span class="label-text"><?php echo esc_html__( 'Active', 'a-faq-builder' )?></span>
+												</label>
+											</div>
 										</div>
 										<div class="afb--rs">
 											<span class="hover-control">

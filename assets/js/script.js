@@ -2,8 +2,8 @@ var AFBFront = AFBFront || {};
 
 AFBFront.accordion = {
 	init: function () {
-		this.create();
 		this.beforeAnimate();
+		this.create();
 	},
 
 	create: function () {
@@ -28,6 +28,7 @@ AFBFront.accordion = {
 					AFBFront.accordion.startAnimate(afb_items);
 				});
 			});
+			AFBFront.accordion.startAnimate(afb_items);
 		});
 
 		// On screen resize fixed accordion body height
@@ -54,7 +55,12 @@ AFBFront.accordion = {
 			const elHeight = targetEl.getAttribute("max-height");
 
 			if (item.classList.contains("active")) {
-				targetEl.style.maxHeight = parseFloat(elHeight) + 30 + "px";
+				if (parseFloat(elHeight) <= 500) {
+					targetEl.style.maxHeight = parseFloat(elHeight) + 30 + "px";
+				} else {
+					targetEl.style.maxHeight = 500 + "px";
+					targetEl.style.overflow = "auto";
+				}
 			} else {
 				targetEl.style.maxHeight = "";
 			}
