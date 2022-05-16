@@ -174,13 +174,13 @@ class Register_Meta_Boxes {
 										</div>
 										<div class="afb--rs">
 											<span class="hover-control">
-												<span class="dashicons dashicons-admin-page clone"></span>
-												<span class="dashicons dashicons-trash trash"></span>
+												<span class="dashicons dashicons-admin-page clone" title="Clone"></span>
+												<span class="dashicons dashicons-trash trash" title="Delete"></span>
 											</span>
-											<span class="dashicons dashicons-move handle"></span>
-											<span class="dashicons dashicons-arrow-up move-up"></span>
-											<span class="dashicons dashicons-arrow-down move-down"></span>
-											<span class="dashicons dashicons-editor-code expand-handle"></span>
+											<span class="dashicons dashicons-move handle" title="Drag"></span>
+											<span class="dashicons dashicons-arrow-up move-up" title="Move Up"></span>
+											<span class="dashicons dashicons-arrow-down move-down" title="Move Down"></span>
+											<span class="dashicons dashicons-editor-code expand-handle" title="Expand/Collapse"></span>
 										</div>
 									</div>
 									<div class="item-body">
