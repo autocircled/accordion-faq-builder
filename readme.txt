@@ -44,6 +44,12 @@ Yes! You can use this filter hook to conditionally hide FAQ title.
 5. Accordion FAQ Builder live preview
 
  == Changelog ==
+ = 0.3 =
+ * Added: Youtube video embed supported
+ * Added: Multi-niche accordion supported
+ * Added: Shortcode supported
+ * Fixed: Rich text editor added
+
  = 0.2 =
  * escaping issue fixed
  * shortcode notification added

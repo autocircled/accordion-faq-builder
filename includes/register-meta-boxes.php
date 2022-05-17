@@ -146,7 +146,17 @@ class Register_Meta_Boxes {
 								</div>
 								<div class="row">
 									<label data-target="content-label"><?php echo esc_html__( 'Content', 'a-faq-builder' ); ?></label>
-									<textarea style="width:100%" rows="5" data-target="content-input"></textarea>
+									<!-- <textarea style="width:100%" rows="5" data-target="content-input"></textarea> -->
+									<?php 
+										wp_editor(
+											'', // Content of the editor
+											'aaaa', // editor id
+											array( // Editor settings
+												'textarea_rows' => 10,
+												'default_editor' => wp_default_editor(),
+												
+											)
+											); ?>
 								</div>
 							</div>
 						</div>
@@ -189,8 +199,18 @@ class Register_Meta_Boxes {
 											<input type="text" data-target="title-input" id="afb_data[contents][<?php echo esc_attr( $key ); ?>][title]" name="afb_data[contents][<?php echo esc_attr( $key ); ?>][title]" value="<?php echo esc_attr( $title ); ?>">
 										</div>
 										<div class="row">
-											<label data-target="content-label" for="afb_data[contents][<?php echo esc_attr( $key ); ?>][content]"><?php echo esc_html__( 'Content', 'a-faq-builder' ); ?></label>
-											<textarea style="width:100%" rows="5" data-target="content-input" id="afb_data[contents][<?php echo esc_html( $key ); ?>][content]" name="afb_data[contents][<?php echo esc_attr( $key ); ?>][content]"><?php echo esc_textarea( $content ); ?></textarea>
+											<label data-target="content-label" for="afb_data_content_<?php echo esc_attr( $key ); ?>"><?php echo esc_html__( 'Content', 'a-faq-builder' ); ?></label>
+											<?php 
+											wp_editor(
+												$content, // Content of the editor
+												'afb_data_content_'. esc_attr( $key ), // editor id
+												array( // Editor settings
+													'textarea_rows' => 10,
+													'default_editor' => wp_default_editor(),
+													'textarea_name' => 'afb_data[contents]['. esc_attr( $key ) . '][content]',
+													
+												)
+												); ?>
 										</div>
 									</div>
 								</div>
@@ -212,7 +232,6 @@ class Register_Meta_Boxes {
 	* @param int $post_id
 	*/
 	public function save_afb_content_meta_box_data( $post_id ) {
-
 		// Check if our nonce is set.
 		if ( ! isset( $_POST['afb_content_nonce'] ) ) {
 			return;

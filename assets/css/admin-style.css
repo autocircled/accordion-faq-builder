@@ -16,7 +16,7 @@
 .afb--items .item-body {
     position: absolute;
     opacity: 0;
-    text-indent: -999em;
+    left: -999em;
     border: 1px solid #eee;
     padding: 10px;
     background: #f0f0f1;
@@ -25,7 +25,7 @@
 .afb--items .expanded .item-body {
     position: relative;
     opacity: 1;
-    text-indent: 0;
+    left: 0;
 }
 
 .afb--items .item-header .afb--rs {

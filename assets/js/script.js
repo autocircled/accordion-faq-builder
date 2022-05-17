@@ -25,6 +25,7 @@ AFBFront.accordion = {
 						}
 					}
 					el.classList.toggle("active");
+
 					AFBFront.accordion.startAnimate(afb_items);
 				});
 			});

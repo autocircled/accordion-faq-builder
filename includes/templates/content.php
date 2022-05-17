@@ -8,6 +8,8 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
+
+use \AFaqBuilder\Includes\Helper;
 global $post;
 
 $title_visibility = apply_filters( 'afq_title_show', __return_true(), $args['id'], $post );
@@ -21,9 +23,11 @@ ob_start();
 	<div class="afb-inner-wrapper">
 		<?php
 		if( $title_visibility ) :
+			?>
+			<h3 class="afb-title"><?php echo get_the_title($args['id']); ?></h3>
+			<?php
+		endif;
 		?>
-		<h3 class="afb-title"><?php echo get_the_title($args['id']); ?></h3>
-		<?php endif; ?>
 		<ul class="afb-items">
 			<?php
 			if ( isset( $value['contents'] ) && ! empty( $value['contents'] ) && is_array( $value['contents'] ) && count( $value['contents'] ) > 0 ) :
@@ -45,7 +49,7 @@ ob_start();
 								</div>
 								<div class="afb-item-body">
 									<div class="afb-item-content">
-										<p><?php echo esc_html( $item_content ); ?></p>
+										<p><?php echo do_shortcode( wp_kses( $item_content, Helper::allowed_html_tag() ) ); ?></p>
 									</div>
 								</div>
 							</div>
