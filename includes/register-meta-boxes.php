@@ -85,7 +85,7 @@ class Register_Meta_Boxes {
 						</li>
 						<li>
 							<input type="radio" name="afb_data[type]" id="afb-type-post" value="post" disabled="disabled">
-							<label for="afb-type-post"><?php echo esc_html__( 'Posts (Pro)', 'a-faq-builder' ); ?></label>
+							<label for="afb-type-post"><?php echo esc_html__( 'Posts (Coming Soon)', 'a-faq-builder' ); ?></label>
 						</li>
 					</ul>
 				</div>
@@ -105,8 +105,8 @@ class Register_Meta_Boxes {
 					<h3 class="section-title"><?php echo esc_html__( 'Bullet Type', 'a-faq-builder' ); ?></h3>
 					<ul>
 						<li>
-							<input type="radio" name="afb_data[bullet_type]" id="afb-bullet-icon" value="icon" <?php echo $selected_bullet_type && 'icon' === $selected_bullet_type ? esc_attr( 'checked' ) : ''; ?> >
-							<label for="afb-bullet-icon"><?php echo esc_html__( 'Icon', 'a-faq-builder' ); ?></label>
+							<input type="radio" name="afb_data[bullet_type]" id="afb-bullet-icon" value="icon" <?php echo $selected_bullet_type && 'icon' === $selected_bullet_type ? esc_attr( 'checked' ) : ''; ?> disabled>
+							<label for="afb-bullet-icon"><?php echo esc_html__( 'Icon (Coming Soon)', 'a-faq-builder' ); ?></label>
 						</li>
 						<li>
 							<input type="radio" name="afb_data[bullet_type]" id="afb-bullet-number" value="number" <?php echo $selected_bullet_type && 'number' === $selected_bullet_type ? esc_attr( 'checked' ) : ''; ?>>
