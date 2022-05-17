@@ -109,17 +109,13 @@
 .a-faq-builder.temp2 .afb-item:hover .item-header {
     background: #444;
 }
-.a-faq-builder.temp2 .afb-item .afb-title-wrap {
+.a-faq-builder.temp2 .afb-item .afb-item-title {
     color: #4F6592;
     font-weight: 500;
 }
-.a-faq-builder.temp2 .afb-item.active .item-header .left-icon,
-.a-faq-builder.temp2 .afb-item:hover .item-header .left-icon,
-.a-faq-builder.temp2 .afb-item.active .item-header .afb-title-wrap,
-.a-faq-builder.temp2 .afb-item:hover .item-header .afb-title-wrap,
-.a-faq-builder.temp2 .afb-item.active .item-header .right-icon,
-.a-faq-builder.temp2 .afb-item:hover .item-header .right-icon {
-    color: #fff;
+.a-faq-builder.temp2 .afb-item:hover a.afb-item-title,
+.a-faq-builder.temp2 .afb-item.active .item-header .afb-item-title {
+    color: #96aad1;
 }
 
 /**
