@@ -6,6 +6,7 @@
  *
  * @package    a-faq-builder
  */
+
 namespace AFaqBuilder;
 
 if ( ! defined( 'ABSPATH' ) ) {

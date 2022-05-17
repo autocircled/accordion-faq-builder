@@ -6,6 +6,7 @@
  *
  * @package    a-faq-builder
  */
+
 namespace AFaqBuilder;
 
 use \AFaqBuilder\Includes\Register_Meta_Boxes;
@@ -19,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Bootstrap {
 
-    /**
+	/**
 	 * Holds class object
 	 *
 	 * @var   object
@@ -27,14 +28,14 @@ class Bootstrap {
 	 */
 	private static $instance;
 
-    public function __construct() {
+	public function __construct() {
 		Register_Post_Type::instance();
 		Register_Meta_Boxes::instance();
 		Shortcode::instance();
 		Enqueue_Script::instance();
-    }
+	}
 
-    public static function instance() {
+	public static function instance() {
 		if ( is_null( self::$instance ) ) {
 			self::$instance = new self();
 		}

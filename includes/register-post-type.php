@@ -6,6 +6,7 @@
  *
  * @package    a-faq-builder
  */
+
 namespace AFaqBuilder\Includes;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -56,8 +57,8 @@ class Register_Post_Type {
 		$labels = apply_filters(
 			'afb_post_type_labels',
 			array(
-				'name'               => esc_html_x( 'Accordion FAQs', 'a-faq-builder' ),
-				'singular_name'      => esc_html_x( 'Accordion', 'a-faq-builder' ),
+				'name'               => esc_html__( 'Accordion FAQs', 'a-faq-builder' ),
+				'singular_name'      => esc_html__( 'Accordion', 'a-faq-builder' ),
 				'add_new'            => esc_html__( 'Add New', 'a-faq-builder' ),
 				'add_new_item'       => esc_html__( 'Add Accordion FAQ', 'a-faq-builder' ),
 				'edit_item'          => esc_html__( 'Edit Accordion FAQ', 'a-faq-builder' ),
@@ -72,20 +73,6 @@ class Register_Post_Type {
 			)
 		);
 
-		// Base 64 encoded SVG image.
-		$menu_icon = 'data:image/svg+xml;base64,' . base64_encode(
-			'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
-			<style type="text/css">
-				.st0{fill:#A0A5AA;}
-			</style>
-			<g>
-				<path class="st0" d="M0,128v256h512V128H0z M480,352H32V224h448V352z"/>
-				<path class="st0" d="M0,0h512v96H0V0z"/>
-				<path class="st0" d="M0,416h512v96H0V416z"/>
-			</g>
-			</svg>'
-		);
-
 		// Set the Accordion FAQ Builder post type arguments.
 		$args = apply_filters(
 			'afb_post_type_args',
@@ -95,7 +82,7 @@ class Register_Post_Type {
 				'public'              => false,
 				'show_ui'             => true,
 				'exclude_from_search' => true,
-				'menu_position'       => apply_filters( 'afb_menu_position', 116 ),
+				'menu_position'       => apply_filters( 'afb_menu_position', 120 ),
 				'show_in_admin_bar'   => false,
 				'query_var'           => false,
 				'rewrite'             => false,
