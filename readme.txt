@@ -13,7 +13,25 @@ This is an Accordion FAQ Builder plugin which helps you to create awesome, eye-c
 
 == Description ==
 
-A plugin for almost any kind of websites which helps to create requently asked questions. You can create any number of Accordion FAQ. This Accordion FAQ Builder plugin helps you to create multi-functional Accordion FAQs.
+A plugin for almost any kind of websites which helps to create frequently asked questions. You can create any numbers of Accordion FAQ. This Accordion FAQ Builder plugin helps you to create multi-functional Accordion FAQs.
+
+= Shortcode =
+`[A_FAQ_Builder id="123"]`
+Here `123` is the ID of your recently created Accordion FAQ.
+
+= Features =
+* Responsive design
+* Drag & drop Accordion sorting
+* Add & Remove Accordion item
+* Multiple Accordions (Create unlimited accordions in same page)
+* Lightweight
+* SEO Friendly
+* Smooth animation
+* Translation Ready
+* Compatible with any Theme
+* Semantic HTML5 design and CSS3 transitions
+* Cross-browser Supported
+* And much more options
 
 == Installation ==
 
@@ -41,9 +59,19 @@ Yes! You can use this filter hook to conditionally hide FAQ title.
 2. Accordion edit screen controls
 3. Accordion FAQ shortcode
 4. Add Accordion FAQ Builder into Gutenberg
-5. Accordion FAQ Builder live preview
+5. Accordion FAQ Builder Template#1
+6. Accordion FAQ Builder Template#2
+7. Accordion FAQ Builder Template#3
 
  == Changelog ==
+ = 0.3 =
+ * Added: 3 pre-designed templates added
+ * Added: Bullet type added
+ * Added: Active FAQ item which expanded when page loads
+ * Fixed: Small CSS issue
+ * Improved: Accordion behavior
+ * Improved: Admin interface
+
  = 0.2 =
  * escaping issue fixed
  * shortcode notification added

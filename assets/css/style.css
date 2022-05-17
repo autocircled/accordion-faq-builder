@@ -82,6 +82,13 @@
 .a-faq-builder li.afb-item.active .afb-item-body::-webkit-scrollbar-thumb:hover {
     background: #a5a5a5;
 }
+.a-faq-builder .afb-item .afb-item-title span.right-icon i.fa-minus,
+.a-faq-builder .afb-item.active .afb-item-title span.right-icon i.fa-plus {
+    display: none;
+}
+.a-faq-builder .afb-item.active .afb-item-title span.right-icon i.fa-minus {
+    display: inline-block;
+}
 
 /**
  * Template 1

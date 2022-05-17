@@ -40,7 +40,10 @@ ob_start();
 											<span class="number"><?php echo esc_attr( ( $key + 1 ) . '.' ); ?></span>
 											<?php } ?>
 											<span class="afb-title-wrap"><?php echo esc_html( $item_title ); ?></span>
-											<span class="right-icon"><i class="fa-solid fa-plus"></i></span>
+											<span class="right-icon">
+												<i class="fa-solid fa-plus"></i>
+												<i class="fa-solid fa-minus"></i>
+											</span>
 										</a>
 								</div>
 								<div class="afb-item-body">

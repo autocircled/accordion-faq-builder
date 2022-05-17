@@ -49,9 +49,5 @@ if ( ! defined( 'AFAQBUILDER_VERSION' ) ) {
 require_once __DIR__ . '/autoloader.php';
 Autoloader::run();
 
-// $activate_and_deactivate_action = [ Module::class, 'on_activate_and_deactivate_plugin' ];
-// register_activation_hook( __FILE__, $activate_and_deactivate_action );
-// register_deactivation_hook( __FILE__, $activate_and_deactivate_action );
-
 // Bootstrap the plugin
 Bootstrap::instance();
