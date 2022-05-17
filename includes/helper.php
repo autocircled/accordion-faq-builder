@@ -19,7 +19,26 @@ class Helper {
 		'id' => 0,
 		'position' => 'vertical',
 		'type' => 'content',
+		'template' => '1',
+		'bullet_type' => 'icon',
 	);
+
+	public static function get_all_templates() {
+
+		$template_list = array(
+			1 => __( 'Template 1', 'a-faq-builder' ),
+			2 => __( 'Template 2', 'a-faq-builder' ),
+			3 => __( 'Template 3', 'a-faq-builder' ),
+			4 => __( 'Template 4', 'a-faq-builder' ),
+			5 => __( 'Template 5', 'a-faq-builder' ),
+			6 => __( 'Template 6', 'a-faq-builder' ),
+			7 => __( 'Template 7', 'a-faq-builder' ),
+			8 => __( 'Template 8', 'a-faq-builder' ),
+			9 => __( 'Template 9', 'a-faq-builder' ),
+		);
+
+		return apply_filters( 'afb_template_list', $template_list );
+	}
 
 	/**
 	 * Recursive sanitation for an array

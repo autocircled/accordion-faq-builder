@@ -41,10 +41,10 @@ class Register_Meta_Boxes {
 	protected function setup() {
 		add_action( 'add_meta_boxes', [ $this, 'add_meta_boxes' ] );
 		add_action( 'save_post', [ $this, 'save_afb_content_meta_box_data' ] );
-		add_filter('manage_accordion_faq_posts_columns', function( $columns ) {
-			return array_merge( $columns, ['shortcode' => __('Shortcode', 'a-faq-builder')] );
-		});
-		add_action('manage_accordion_faq_posts_custom_column', [ $this, 'shortcode_genarator' ], 10, 2);
+		add_filter( 'manage_accordion_faq_posts_columns', function( $columns ) {
+			return array_merge( $columns, ['shortcode' => __( 'Shortcode', 'a-faq-builder' )] );
+		} );
+		add_action( 'manage_accordion_faq_posts_custom_column', [ $this, 'shortcode_genarator' ], 10, 2 );
 	}
 
 	public function add_meta_boxes() {
@@ -68,24 +68,62 @@ class Register_Meta_Boxes {
 		wp_nonce_field( 'afb_content_nonce', 'afb_content_nonce' );
 
 		$value = get_post_meta( $post->ID, '_afb_content', true );
-
 		$type = isset( $value['type'] ) && ! empty( $value['type'] ) ? $value['type'] : Helper::$defaults['type'];
+		$selected_template_id = isset( $value['template'] ) && ! empty( $value['template'] ) ? $value['template'] : Helper::$defaults['template'];
+		$selected_bullet_type = isset( $value['bullet_type'] ) && ! empty( $value['bullet_type'] ) ? $value['bullet_type'] : Helper::$defaults['bullet_type'];
 		$contents = isset( $value['contents'] ) && ! empty( $value['contents'] ) && is_array( $value['contents'] ) ? $value['contents'] : array(); 
+		$active_id = isset( $value['active'] ) && ! empty( $value['active'] ) ? $value['active'] : false; 
 		?>
 		<div class="afb-content-wrapper">
-			<header class="meta-box-header">
-				<h3 class="section-title"><?php echo esc_html__( 'Accordion Type', 'a-faq-builder' ); ?></h3>
-				<ul>
-					<li>
-						<input type="radio" name="afb_data[type]" id="afb-type-content" value="content" <?php echo $type && 'content' === $type ? esc_attr( 'checked' ) : ''; ?> >
-						<label for="afb-type-content"><?php echo esc_html__( 'Content', 'a-faq-builder' ); ?></label>
-					</li>
-					<li>
-						<input type="radio" name="afb_data[type]" id="afb-type-post" value="post" disabled="disabled">
-						<label for="afb-type-post"><?php echo esc_html__( 'Posts (Pro)', 'a-faq-builder' ); ?></label>
-					</li>
-				</ul>
-			</header>
+			<div class="meta-box-controls">
+				<div class="ctrl ctrl-accordion-type">
+					<h3 class="section-title"><?php echo esc_html__( 'Accordion Type', 'a-faq-builder' ); ?></h3>
+					<ul>
+						<li>
+							<input type="radio" name="afb_data[type]" id="afb-type-content" value="content" <?php echo $type && 'content' === $type ? esc_attr( 'checked' ) : ''; ?> >
+							<label for="afb-type-content"><?php echo esc_html__( 'Content', 'a-faq-builder' ); ?></label>
+						</li>
+						<li>
+							<input type="radio" name="afb_data[type]" id="afb-type-post" value="post" disabled="disabled">
+							<label for="afb-type-post"><?php echo esc_html__( 'Posts (Coming Soon)', 'a-faq-builder' ); ?></label>
+						</li>
+					</ul>
+				</div>
+				<div class="ctrl ctrl-template">
+					<h3 class="section-title"><?php echo esc_html__( 'Template', 'a-faq-builder' ); ?></h3>
+					<select name="afb_data[template]" id="afaqbuilder_template">
+						<?php
+						foreach( Helper::get_all_templates() as $key => $template ) {
+							?>
+							<option value="<?php echo esc_attr( $key ); ?>" <?php echo $key == $selected_template_id ? esc_attr( 'selected' ) : ''; ?> <?php echo $key > 3 ? esc_attr( 'disabled' ) : ''; ?>><?php echo esc_html( $template ); ?></option>
+							<?php
+						}
+						?>
+					</select>
+				</div>
+				<div class="ctrl ctrl-bullet-type">
+					<h3 class="section-title"><?php echo esc_html__( 'Bullet Type', 'a-faq-builder' ); ?></h3>
+					<ul>
+						<li>
+							<input type="radio" name="afb_data[bullet_type]" id="afb-bullet-icon" value="icon" <?php echo $selected_bullet_type && 'icon' === $selected_bullet_type ? esc_attr( 'checked' ) : ''; ?> disabled>
+							<label for="afb-bullet-icon"><?php echo esc_html__( 'Icon (Coming Soon)', 'a-faq-builder' ); ?></label>
+						</li>
+						<li>
+							<input type="radio" name="afb_data[bullet_type]" id="afb-bullet-number" value="number" <?php echo $selected_bullet_type && 'number' === $selected_bullet_type ? esc_attr( 'checked' ) : ''; ?>>
+							<label for="afb-bullet-number"><?php echo esc_html__( 'Number', 'a-faq-builder' ); ?></label>
+						</li>
+						<li>
+							<input type="radio" name="afb_data[bullet_type]" id="afb-bullet-none" value="none" <?php echo $selected_bullet_type && 'none' === $selected_bullet_type ? esc_attr( 'checked' ) : ''; ?>>
+							<label for="afb-bullet-none"><?php echo esc_html__( 'None', 'a-faq-builder' ); ?></label>
+						</li>
+					</ul>
+				</div>
+				<div class="ctrl ctrl-expand-collapse">
+					<ul>
+						<li><span class="button button-primary afb_data_expand_all"><?php echo esc_html__( 'Expand All', 'a-faq-builder' ); ?></span></li>
+						<li><span class="button button-primary afb_data_collapse_all"><?php echo esc_html__( 'Collapse All', 'a-faq-builder' ); ?></span></li>
+				</div>
+			</div>
 			<div class="content-area">
 				<div class="clonable-content" style="display: none;">
 					<li id="clonable-item" class="afb--item afb-clonable-item">
@@ -135,17 +173,24 @@ class Register_Meta_Boxes {
 								<div class="afb--item-wrapper">
 									<div class="item-header">
 										<div class="afb--ls">
+											<div class="active-handle">
+												<input type="radio" name="afb_data[active]" id="afb_data[contents][<?php echo esc_attr( $key ); ?>][active]" value="<?php echo esc_attr( $key ); ?>" <?php echo $active_id == $key ? esc_attr( 'checked' ) : ''; ?>>
+												<label for="afb_data[contents][<?php echo esc_attr( $key ); ?>][active]">
+													<span class="circle"></span>
+													<span class="label-text"><?php echo esc_html__( 'Active', 'a-faq-builder' )?></span>
+												</label>
+											</div>
 											<h3 class="item-counter"><?php echo empty( $title ) ? esc_html__( 'New Item', 'a-faq-builder' ) : esc_html( $title ); ?></h3>
 										</div>
 										<div class="afb--rs">
 											<span class="hover-control">
-												<span class="dashicons dashicons-admin-page clone"></span>
-												<span class="dashicons dashicons-trash trash"></span>
+												<span class="dashicons dashicons-admin-page clone" title="Clone"></span>
+												<span class="dashicons dashicons-trash trash" title="Delete"></span>
 											</span>
-											<span class="dashicons dashicons-move handle"></span>
-											<span class="dashicons dashicons-arrow-up move-up"></span>
-											<span class="dashicons dashicons-arrow-down move-down"></span>
-											<span class="dashicons dashicons-editor-code expand-handle"></span>
+											<span class="dashicons dashicons-move handle" title="Drag"></span>
+											<span class="dashicons dashicons-arrow-up move-up" title="Move Up"></span>
+											<span class="dashicons dashicons-arrow-down move-down" title="Move Down"></span>
+											<span class="dashicons dashicons-editor-code expand-handle" title="Expand/Collapse"></span>
 										</div>
 									</div>
 									<div class="item-body">

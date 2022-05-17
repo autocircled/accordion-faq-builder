@@ -140,6 +140,29 @@ aFaqBuilder.copyShortcode = {
 	},
 };
 
+aFaqBuilder.toggleIt = {
+	init: function () {
+		this.toggle();
+	},
+
+	toggle: function () {
+		const expandBtn = document.querySelector(".afb_data_expand_all");
+		const faqItems = document.querySelectorAll(".afb--items .afb--item");
+		expandBtn.addEventListener("click", function () {
+			faqItems.forEach((el) => {
+				el.classList.add("expanded");
+			});
+		});
+
+		const collapseBtn = document.querySelector(".afb_data_collapse_all");
+		collapseBtn.addEventListener("click", function () {
+			faqItems.forEach((el) => {
+				el.classList.remove("expanded");
+			});
+		});
+	},
+};
+
 /**
  * Is the DOM ready?
  *
@@ -167,6 +190,7 @@ function afbDomReady(fn) {
 afbDomReady(function () {
 	aFaqBuilder.addNewFaqItem.init();
 	aFaqBuilder.copyShortcode.init();
+	aFaqBuilder.toggleIt.init();
 });
 
 /**

@@ -113,6 +113,54 @@
     display: inline-block;
 }
 
+.afb--items .afb--ls {
+    display: flex;
+    column-gap: 20px;
+}
+.afb--items .active-handle {
+    display: flex;
+    align-items: center;
+}
+.afb--items input[name="afb_data\[active\]"] {
+    display: none;
+}
+.afb--items input[name="afb_data\[active\]"]+label {
+    border: 1px solid #a3a3a3;
+    padding: 3px 10px;
+    line-height: 1;
+    background: #ddd;
+    text-transform: uppercase;
+    border-radius: 10px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+.afb--items input[name="afb_data\[active\]"]:checked+label {
+    background: rgb(255, 255, 255);
+    border-color: #5ff5a8;
+    box-shadow: 0 0 8px -1px #329160;
+    color: green;
+}
+.afb--items input[name="afb_data\[active\]"]+label span.circle {
+    width: 14px;
+    height: 14px;
+    background: #c9c9c9;
+    display: inline-block;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.afb--items input[name="afb_data\[active\]"]:checked+label span.circle {
+    background: #5ff5a8;
+}
+.afb-content-wrapper .ctrl-expand-collapse ul {
+    text-align: right;
+}
+.afb-content-wrapper .ctrl-expand-collapse li {
+    display: inline-block;
+}
+
+
 @keyframes blinker {  
     50% { opacity: 0; }
 }
