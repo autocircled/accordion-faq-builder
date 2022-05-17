@@ -159,7 +159,7 @@ class Register_Meta_Boxes {
 							$title = isset( $val['title'] ) && ! empty( $val['title'] ) ? $val['title'] : '';
 							$content = isset( $val['content'] ) ? $val['content'] : '';
 							?>
-							<li id="item-<?php echo esc_attr( $key ); ?>" class="afb--item afb--item-<?php echo esc_attr( $key ); ?> expanded" data-id="<?php echo esc_attr( $key ); ?>">
+							<li id="item-<?php echo esc_attr( $key ); ?>" class="afb--item afb--item-<?php echo esc_attr( $key ); ?>" data-id="<?php echo esc_attr( $key ); ?>">
 								<div class="afb--item-wrapper">
 									<div class="item-header">
 										<div class="afb--ls">
